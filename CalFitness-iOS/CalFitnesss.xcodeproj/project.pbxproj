@@ -20,6 +20,7 @@
 		9BB267D81E2B5BF50049599C /* Graph.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BB267D71E2B5BF50049599C /* Graph.swift */; };
 		9BB267DB1E2B5C0C0049599C /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9BB267D91E2B5C0C0049599C /* Bolts.framework */; };
 		9BB267DC1E2B5C0C0049599C /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9BB267DA1E2B5C0C0049599C /* Parse.framework */; };
+		9BB267DF1E2B5DAD0049599C /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BB267DE1E2B5DAD0049599C /* Constants.swift */; };
 		9BB477811D86891B00D57F99 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9BB4776D1D86891B00D57F99 /* Info.plist */; };
 		9BB477821D86891B00D57F99 /* LTCharacterDiffResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BB4776E1D86891B00D57F99 /* LTCharacterDiffResult.swift */; };
 		9BB477831D86891B00D57F99 /* LTCharacterLimbo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BB4776F1D86891B00D57F99 /* LTCharacterLimbo.swift */; };
@@ -70,6 +71,7 @@
 		9BB267D71E2B5BF50049599C /* Graph.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Graph.swift; sourceTree = "<group>"; };
 		9BB267D91E2B5C0C0049599C /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Bolts.framework; path = Frameworks/Bolts.framework; sourceTree = "<group>"; };
 		9BB267DA1E2B5C0C0049599C /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Parse.framework; path = Frameworks/Parse.framework; sourceTree = "<group>"; };
+		9BB267DE1E2B5DAD0049599C /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		9BB4776D1D86891B00D57F99 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9BB4776E1D86891B00D57F99 /* LTCharacterDiffResult.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LTCharacterDiffResult.swift; sourceTree = "<group>"; };
 		9BB4776F1D86891B00D57F99 /* LTCharacterLimbo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LTCharacterLimbo.swift; sourceTree = "<group>"; };
@@ -243,6 +245,7 @@
 			isa = PBXGroup;
 			children = (
 				FB56B5ED1CCA3A2800621716 /* CalFitness.entitlements */,
+				9BB267DE1E2B5DAD0049599C /* Constants.swift */,
 				FBBB00191CAEF39900DFFA34 /* AppDelegate.swift */,
 				9BCCF9DD1D7164EE00FA852D /* AppDelegate+Parse.swift */,
 				9BCCF9D91D71646A00FA852D /* AppDelegate+Notification.swift */,
@@ -355,6 +358,7 @@
 				9BCCF9DA1D71646A00FA852D /* AppDelegate+Notification.swift in Sources */,
 				FBBB001C1CAEF39900DFFA34 /* HomeViewController.swift in Sources */,
 				FB56B5F31CCA3B3700621716 /* HealthController.swift in Sources */,
+				9BB267DF1E2B5DAD0049599C /* Constants.swift in Sources */,
 				9BB477891D86891B00D57F99 /* LTMorphingLabel+Evaporate.swift in Sources */,
 				FBBB001A1CAEF39900DFFA34 /* AppDelegate.swift in Sources */,
 				9BB4778E1D86891B00D57F99 /* LTStringDiffResult.swift in Sources */,

@@ -14,9 +14,9 @@ extension AppDelegate {
         Parse.enableLocalDatastore()
         Parse.initializeWithConfiguration(ParseClientConfiguration(block: {(configuration:ParseMutableClientConfiguration) -> Void in
             configuration.localDatastoreEnabled = true;
-            configuration.server="https://pg-app-uuh60z1arvgpgx2qp0lbsddcgc0iz7.scalabl.cloud/1/"
-            configuration.applicationId="iJdpIxC4jBNFkj6eEjNIXKmuToEUFMHaFoSPSzUY"
-            configuration.clientKey="N4A0gDqaiOl1YUYbAtMR0Ls8peEPaoYFMFSUUHTM"
+            configuration.server = SashidoServer
+            configuration.applicationId = SashidoAppId
+            configuration.clientKey = SashidoClientKey
             
         }))
     }
