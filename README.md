@@ -1,1 +1,1 @@
-# CalFitness
+# calFitness
