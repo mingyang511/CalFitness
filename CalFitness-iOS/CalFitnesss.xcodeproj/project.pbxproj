@@ -21,10 +21,10 @@
 		9BB267DB1E2B5C0C0049599C /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9BB267D91E2B5C0C0049599C /* Bolts.framework */; };
 		9BB267DC1E2B5C0C0049599C /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9BB267DA1E2B5C0C0049599C /* Parse.framework */; };
 		9BB267DF1E2B5DAD0049599C /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BB267DE1E2B5DAD0049599C /* Constants.swift */; };
-		9BB267E11E2B61D50049599C /* CFUserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BB267E01E2B61D50049599C /* CFUserManager.swift */; };
 		9BB267E31E2B62CA0049599C /* CFConfigManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BB267E21E2B62CA0049599C /* CFConfigManager.swift */; };
 		9BB267E51E2B72810049599C /* CFAuthHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BB267E41E2B72810049599C /* CFAuthHelper.swift */; };
 		9BB267E71E2B7B5C0049599C /* CFRecord.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BB267E61E2B7B5C0049599C /* CFRecord.swift */; };
+		9BB267E91E2CA45B0049599C /* CFUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BB267E81E2CA45B0049599C /* CFUser.swift */; };
 		9BB477811D86891B00D57F99 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9BB4776D1D86891B00D57F99 /* Info.plist */; };
 		9BB477821D86891B00D57F99 /* LTCharacterDiffResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BB4776E1D86891B00D57F99 /* LTCharacterDiffResult.swift */; };
 		9BB477831D86891B00D57F99 /* LTCharacterLimbo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BB4776F1D86891B00D57F99 /* LTCharacterLimbo.swift */; };
@@ -49,7 +49,7 @@
 		9BCCF9DE1D7164EE00FA852D /* AppDelegate+ParseServer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BCCF9DD1D7164EE00FA852D /* AppDelegate+ParseServer.swift */; };
 		FB3705121CB8153B0091FDCF /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB3705111CB8153B0091FDCF /* AboutViewController.swift */; };
 		FB56B5F11CCA3A7A00621716 /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FB56B5F01CCA3A7A00621716 /* HealthKit.framework */; };
-		FB56B5F31CCA3B3700621716 /* CFHealthController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB56B5F21CCA3B3700621716 /* CFHealthController.swift */; };
+		FB56B5F31CCA3B3700621716 /* CFHealthKitHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB56B5F21CCA3B3700621716 /* CFHealthKitHelper.swift */; };
 		FB695AF01CCA180800A3F0D2 /* GraphBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB695AEF1CCA180800A3F0D2 /* GraphBar.swift */; };
 		FBBB001A1CAEF39900DFFA34 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBBB00191CAEF39900DFFA34 /* AppDelegate.swift */; };
 		FBBB001C1CAEF39900DFFA34 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBBB001B1CAEF39900DFFA34 /* HomeViewController.swift */; };
@@ -75,10 +75,10 @@
 		9BB267D91E2B5C0C0049599C /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Bolts.framework; path = Frameworks/Bolts.framework; sourceTree = "<group>"; };
 		9BB267DA1E2B5C0C0049599C /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Parse.framework; path = Frameworks/Parse.framework; sourceTree = "<group>"; };
 		9BB267DE1E2B5DAD0049599C /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
-		9BB267E01E2B61D50049599C /* CFUserManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CFUserManager.swift; sourceTree = "<group>"; };
 		9BB267E21E2B62CA0049599C /* CFConfigManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CFConfigManager.swift; sourceTree = "<group>"; };
 		9BB267E41E2B72810049599C /* CFAuthHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CFAuthHelper.swift; sourceTree = "<group>"; };
 		9BB267E61E2B7B5C0049599C /* CFRecord.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CFRecord.swift; sourceTree = "<group>"; };
+		9BB267E81E2CA45B0049599C /* CFUser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CFUser.swift; sourceTree = "<group>"; };
 		9BB4776D1D86891B00D57F99 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9BB4776E1D86891B00D57F99 /* LTCharacterDiffResult.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LTCharacterDiffResult.swift; sourceTree = "<group>"; };
 		9BB4776F1D86891B00D57F99 /* LTCharacterLimbo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LTCharacterLimbo.swift; sourceTree = "<group>"; };
@@ -105,7 +105,7 @@
 		FB3705111CB8153B0091FDCF /* AboutViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
 		FB56B5ED1CCA3A2800621716 /* CalFitness.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = CalFitness.entitlements; sourceTree = "<group>"; };
 		FB56B5F01CCA3A7A00621716 /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = System/Library/Frameworks/HealthKit.framework; sourceTree = SDKROOT; };
-		FB56B5F21CCA3B3700621716 /* CFHealthController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CFHealthController.swift; sourceTree = "<group>"; };
+		FB56B5F21CCA3B3700621716 /* CFHealthKitHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CFHealthKitHelper.swift; sourceTree = "<group>"; };
 		FB695AEF1CCA180800A3F0D2 /* GraphBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GraphBar.swift; sourceTree = "<group>"; };
 		FBBB00161CAEF39900DFFA34 /* CalFitness.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CalFitness.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FBBB00191CAEF39900DFFA34 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -141,6 +141,26 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		9BB267EA1E2CA8A20049599C /* Helper */ = {
+			isa = PBXGroup;
+			children = (
+				FB56B5F21CCA3B3700621716 /* CFHealthKitHelper.swift */,
+				9BCCF9D31D7162C700FA852D /* CFDateHelper.swift */,
+				9BB267E41E2B72810049599C /* CFAuthHelper.swift */,
+			);
+			name = Helper;
+			sourceTree = "<group>";
+		};
+		9BB267EB1E2CA8B60049599C /* Manager */ = {
+			isa = PBXGroup;
+			children = (
+				9B8EC1081D716AE500E70ABB /* CFTaskManager.swift */,
+				9BB267E21E2B62CA0049599C /* CFConfigManager.swift */,
+				9BCCF9D71D71635E00FA852D /* CFRecordManager.swift */,
+			);
+			name = Manager;
+			sourceTree = "<group>";
+		};
 		9BB4776C1D86891B00D57F99 /* LTMorphingLabel */ = {
 			isa = PBXGroup;
 			children = (
@@ -202,14 +222,8 @@
 			isa = PBXGroup;
 			children = (
 				FBBB00201CAEF39900DFFA34 /* CalFitness.xcdatamodeld */,
-				FB56B5F21CCA3B3700621716 /* CFHealthController.swift */,
-				9B8EC1081D716AE500E70ABB /* CFTaskManager.swift */,
-				9BB267E21E2B62CA0049599C /* CFConfigManager.swift */,
-				9BCCF9D71D71635E00FA852D /* CFRecordManager.swift */,
 				9BB267E61E2B7B5C0049599C /* CFRecord.swift */,
-				9BB267E01E2B61D50049599C /* CFUserManager.swift */,
-				9BCCF9D31D7162C700FA852D /* CFDateHelper.swift */,
-				9BB267E41E2B72810049599C /* CFAuthHelper.swift */,
+				9BB267E81E2CA45B0049599C /* CFUser.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -262,6 +276,8 @@
 				FB1C6F941D0C80960018526E /* View */,
 				FB1C6F951D0C80B20018526E /* Controller */,
 				FB1C6F961D0C80B60018526E /* Model */,
+				9BB267EB1E2CA8B60049599C /* Manager */,
+				9BB267EA1E2CA8A20049599C /* Helper */,
 			);
 			path = CalFitness;
 			sourceTree = "<group>";
@@ -367,10 +383,10 @@
 				9BB477851D86891B00D57F99 /* LTEmitterView.swift in Sources */,
 				9BCCF9DA1D71646A00FA852D /* AppDelegate+Notification.swift in Sources */,
 				FBBB001C1CAEF39900DFFA34 /* HomeViewController.swift in Sources */,
-				9BB267E11E2B61D50049599C /* CFUserManager.swift in Sources */,
-				FB56B5F31CCA3B3700621716 /* CFHealthController.swift in Sources */,
+				FB56B5F31CCA3B3700621716 /* CFHealthKitHelper.swift in Sources */,
 				9BB267E71E2B7B5C0049599C /* CFRecord.swift in Sources */,
 				9BB267DF1E2B5DAD0049599C /* Constants.swift in Sources */,
+				9BB267E91E2CA45B0049599C /* CFUser.swift in Sources */,
 				9BB477891D86891B00D57F99 /* LTMorphingLabel+Evaporate.swift in Sources */,
 				9BB267E31E2B62CA0049599C /* CFConfigManager.swift in Sources */,
 				FBBB001A1CAEF39900DFFA34 /* AppDelegate.swift in Sources */,

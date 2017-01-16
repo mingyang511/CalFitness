@@ -16,7 +16,7 @@ protocol CFHealthDelegate
     func updateView(steps: Int, goal:Int)
 }
 
-class CFHealthController
+class CFHealthKitHelper
 {
     var delegate: CFHealthDelegate?
     var authorized: Bool = false
@@ -27,7 +27,7 @@ class CFHealthController
     let readDataTypes: Set<HKObjectType> = [HKObjectType.quantityTypeForIdentifier(HKQuantityTypeIdentifierStepCount)!]
     let writeDataTypes: Set<HKSampleType> = []
     
-    static let sharedInstance = CFHealthController()
+    static let sharedInstance = CFHealthKitHelper()
     
     private init() {}
  

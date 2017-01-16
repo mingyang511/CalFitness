@@ -1,8 +1,8 @@
 //
-//  CFUserManager.swift
+//  CFUser.swift
 //  CalFitnesss
 //
-//  Created by Lee on 1/15/17.
+//  Created by Lee on 1/16/17.
 //  Copyright © 2017 BerkeleyIEOR. All rights reserved.
 //
 
@@ -18,14 +18,9 @@ enum CFUserGroup: NSInteger
     case Unknown
 }
 
-class CFUserManager
+class CFUser : PFUser
 {
-    
-    // Method to fetch user from server
-    class func fetchUserFromServer()
-    {
-        PFUser.currentUser()?.fetchInBackground()
-    }
+    @NSManaged var group: NSNumber
     
     // Method to cehck user's group
     class func userGroup() -> CFUserGroup

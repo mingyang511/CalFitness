@@ -24,9 +24,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate
         registerParseServer()
         
         // Authorize HealthKit
-        if (!CFHealthController.sharedInstance.authorized)
+        if (!CFHealthKitHelper.sharedInstance.authorized)
         {
-            CFHealthController.sharedInstance.authorizeHealthKit
+            CFHealthKitHelper.sharedInstance.authorizeHealthKit
             {
                 (authorized,  error) -> Void in
                 

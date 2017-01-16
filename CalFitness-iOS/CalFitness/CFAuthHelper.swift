@@ -19,7 +19,7 @@ class CFAuthHelper
             
             if (error == nil)
             {
-                CFHealthController.sharedInstance.fetchRecordsOfPastWeek(
+                CFHealthKitHelper.sharedInstance.fetchRecordsOfPastWeek(
                 {
                     (success) in
                     completion(success: true)

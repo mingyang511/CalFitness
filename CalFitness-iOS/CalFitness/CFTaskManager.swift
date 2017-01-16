@@ -13,7 +13,7 @@ class CFTaskManager
 {
     class func collectNewRecord(background:Bool, completion:(success:Bool) -> Void)
     {
-        CFHealthController.sharedInstance.fetchRecordOfToday(background)
+        CFHealthKitHelper.sharedInstance.fetchRecordOfToday(background)
         {
             (success) in
             completion(success:success)

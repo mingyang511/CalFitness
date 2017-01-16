@@ -12,12 +12,9 @@ import Bolts
 
 class HomeViewController: UIViewController, CFHealthDelegate
 {
-
-    @IBOutlet var stepsTodayLabel: LTMorphingLabel!
-    
     @IBOutlet var historyButton: UIButton!
     @IBOutlet var infoButton: UIButton!
-   
+    @IBOutlet var stepsTodayLabel: LTMorphingLabel!
     @IBOutlet weak var goalTodayLabel: LTMorphingLabel!
     
     override func viewDidLoad()
@@ -41,7 +38,7 @@ class HomeViewController: UIViewController, CFHealthDelegate
     
     override func viewWillAppear(animated: Bool)
     {
-        CFHealthController.sharedInstance.delegate = self
+        CFHealthKitHelper.sharedInstance.delegate = self
     }
 
     override func didReceiveMemoryWarning()

@@ -19,7 +19,10 @@ class CFRecordManager
         let record = createNewRecord(step, date:date)
         
         // Save record in background and retrieve goal
-        record.saveInBackgroundWithBlock {(success:Bool, error:NSError?) in
+        record.saveInBackgroundWithBlock
+        {
+            (success:Bool, error:NSError?) in
+            
             let goal = record["goal"] as? Float
             CFRecordManager.setGoal(goal!, forDate: date)
             completion(success:success, goal:goal!, date:date);
@@ -27,12 +30,12 @@ class CFRecordManager
     }
     
     // Method to create new record
-    class func createNewRecord(step:NSNumber, date:NSDate) -> PFObject
+    class func createNewRecord(step:NSNumber, date:NSDate) -> CFRecord
     {
-        let record = PFObject(className: "Record")
-        record["step"] = step;
-        record["date"] = CFDateHelper.getDateString(date);
-        record["user"] = (PFUser.currentUser() != nil) ? PFUser.currentUser() : NSNull();
+        let record = CFRecord()
+        record.step = step;
+        record.date = CFDateHelper.getDateString(date);
+        record.user = PFUser.currentUser();
         return record;
     }
     
@@ -46,11 +49,11 @@ class CFRecordManager
     }
 
     // Method to fectch records from server in background
-    class func fetchRecordsFromServerInBackground(completion:(success:Bool, objects:[PFObject]?) -> Void)
+    class func fetchRecordsFromServerInBackground(completion:(success:Bool, objects:[CFRecord]?) -> Void)
     {
         if (PFUser.currentUser() == nil)
         {
-            completion(success: false, objects: [PFObject]());
+            completion(success: false, objects: [CFRecord]());
             return
         }
         
@@ -60,14 +63,15 @@ class CFRecordManager
         query.findObjectsInBackgroundWithBlock
         {
             (objects: [PFObject]?, error: NSError?) in
-            var uniqueObjects = [PFObject]()
+            
+            var uniqueObjects = [CFRecord]()
             var dates = [String]()
             if !(objects == nil)
             {
                 if objects?.count > 0 {
                     for i in 0 ... objects!.count-1
                     {
-                        let object = objects![i]
+                        let object = objects![i] as! CFRecord
                         if dates.contains(object["date"] as! String) == false
                         {
                             dates.append(object["date"] as! String)
@@ -76,10 +80,10 @@ class CFRecordManager
                     }
                 }
                 
-                PFObject.unpinAllObjectsInBackgroundWithBlock(
+                CFRecord.unpinAllObjectsInBackgroundWithBlock(
                 {
                     (success:Bool, error:NSError?) in
-                    PFObject.pinAllInBackground(uniqueObjects, block:
+                    CFRecord.pinAllInBackground(uniqueObjects, block:
                     {
                         (success:Bool, error:NSError?) in
                         completion(success: true, objects: uniqueObjects);
@@ -94,11 +98,11 @@ class CFRecordManager
     }
     
     // Method
-    class func getRecordsForLastWeek(completion:(success:Bool, objects:[PFObject]?) -> Void)
+    class func getRecordsForLastWeek(completion:(success:Bool, objects:[CFRecord]?) -> Void)
     {
         if (PFUser.currentUser() == nil)
         {
-            completion(success: false, objects: [PFObject]());
+            completion(success: false, objects: [CFRecord]());
             return
         }
         
@@ -116,7 +120,8 @@ class CFRecordManager
         query.findObjectsInBackgroundWithBlock
         {
             (objects: [PFObject]?, error: NSError?) in
-            completion(success: true, objects: objects);
+            
+            completion(success: true, objects: objects as! [CFRecord]);
         }
     }
 

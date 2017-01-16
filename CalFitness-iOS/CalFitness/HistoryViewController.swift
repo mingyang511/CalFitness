@@ -30,7 +30,7 @@ class HistoryViewController: UIViewController
         self.updateButton.userInteractionEnabled = false;
         self.updateViewWithRecords()
         
-        CFHealthController.sharedInstance.fetchRecordsOfPastWeek(
+        CFHealthKitHelper.sharedInstance.fetchRecordsOfPastWeek(
         {
             (success) in
             
