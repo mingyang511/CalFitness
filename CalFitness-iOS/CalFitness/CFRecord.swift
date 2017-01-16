@@ -13,8 +13,9 @@ class CFRecord : PFObject, PFSubclassing
 {
     @NSManaged var user: PFUser?
     @NSManaged var date: NSString
-    @NSManaged var step: NSNumber
-    @NSManaged var goal: NSNumber
+    @NSManaged var step: Float
+    @NSManaged var goal: Float
+    
     @NSManaged var notificationMessage: NSString
     @NSManaged var notificationCategory: NSNumber
     @NSManaged var notificationPushedAt: NSDate

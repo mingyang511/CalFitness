@@ -30,14 +30,14 @@ class HistoryViewController: UIViewController
         self.updateButton.userInteractionEnabled = false;
         self.updateViewWithRecords()
         
-        CFHealthKitHelper.sharedInstance.fetchRecordsOfPastWeek(
-        {
-            (success) in
-            
-            self.updateViewWithRecords()
-            self.spinner.stopAnimating()
-            self.updateButton.userInteractionEnabled = true;
-        })
+//        CFHealthKitHelper.sharedInstance.fetchRecordsOfPastWeek(
+//        {
+//            (success) in
+//            
+//            self.updateViewWithRecords()
+//            self.spinner.stopAnimating()
+//            self.updateButton.userInteractionEnabled = true;
+//        })
     }
     
     override func viewWillAppear(animated: Bool)

@@ -14,90 +14,26 @@ import Bolts
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate
 {
-
     var window: UIWindow?
 
-    //
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool
     {
         // Register for Parse Server
         registerParseServer()
-        
-        // Authorize HealthKit
-        if (!CFHealthKitHelper.sharedInstance.authorized)
-        {
-            CFHealthKitHelper.sharedInstance.authorizeHealthKit
-            {
-                (authorized,  error) -> Void in
-                
-                if authorized
-                {
-                    print("HealthKit authorization received.")
-                }
-                else
-                {
-                    print("HealthKit authorization denied!")
-                    if error != nil
-                    {
-                        print("\(error)")
-                    }
-                }
-            }
-        }
-        
-        // Verify user session and ask to log in if necessary
-        if((PFUser.currentUser()) == nil)
-        {
-            CFAuthHelper.login(application, completion:
-            {
-                (success) in
-                
-                if (success)
-                {
-                    self.registerRemoteNotification(application)
-                }
-                else
-                {
-                    
-                }
-            })
-        }
-        else
-        {
-            fetchData();
-            self.registerRemoteNotification(application)
-        }
-        
+
+        self.performUserAuthVerification(application)
+        self.performHealthKitAuthVerification(application)
+
         UIApplication.sharedApplication().setMinimumBackgroundFetchInterval(UIApplicationBackgroundFetchIntervalMinimum);
         
         return true
     }
 
-    //
     func applicationWillEnterForeground(application: UIApplication)
     {
-        if (PFUser.currentUser() == nil)
-        {
-
-        }
-        else
-        {
-            CFTaskManager.collectNewRecord(false){ (success) in }
-        }
+        CFNotificationCenterHelper.postApplicationWillEnterForegroundNotification()
     }
-
-    func applicationDidBecomeActive(application: UIApplication)
-    {
-        // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
-    }
-
-    func applicationWillTerminate(application: UIApplication)
-    {
-        // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
-        // Saves changes in the application's managed object context before the application terminates.
-        self.saveContext()
-    }
-    
+        
     lazy var applicationDocumentsDirectory: NSURL =
     {
         let urls = NSFileManager.defaultManager().URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask)

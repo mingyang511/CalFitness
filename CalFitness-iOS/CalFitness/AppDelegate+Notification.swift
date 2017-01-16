@@ -9,8 +9,8 @@
 import Foundation
 import Parse
 
-extension AppDelegate {
-    
+extension AppDelegate
+{
     // Method to register for remote notification
     func application(application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: NSData)
     {
@@ -30,11 +30,11 @@ extension AppDelegate {
  
         if type == "collect"
         {
-            CFTaskManager.collectNewRecord (true)
+            CFTaskManager.uploadTodayRecord(
             {
                 (success) in
-                completionHandler(.NewData);
-            };
+                completionHandler(.NewData)
+            })
         }
         else
         {
@@ -46,11 +46,11 @@ extension AppDelegate {
     func application(application: UIApplication, performFetchWithCompletionHandler
         completionHandler: (UIBackgroundFetchResult) -> Void)
     {
-        CFTaskManager.collectNewRecord(true)
+        CFTaskManager.uploadTodayRecord(
         {
             (success) in
             completionHandler(.NewData);
-        };
+        });
     }
     
     // Method to register remote notification

@@ -19,7 +19,6 @@ class HomeViewController: UIViewController, CFHealthDelegate
     
     override func viewDidLoad()
     {
-        
         super.viewDidLoad()
         
         //Set up buttons images
@@ -34,23 +33,55 @@ class HomeViewController: UIViewController, CFHealthDelegate
         //Navigation View Controller title colors
         self.navigationController!.navigationBar.tintColor = UIColor(red: 6/255.0, green: 29/255.0, blue: 65/255.0, alpha: 1.0)
         
+        CFNotificationCenterHelper.addApplicationWillEnterForegroundObserver(self, selector: #selector(updateRecord))
     }
     
     override func viewWillAppear(animated: Bool)
     {
         CFHealthKitHelper.sharedInstance.delegate = self
+        updateRecord()
     }
-
+    
     override func didReceiveMemoryWarning()
     {
         super.didReceiveMemoryWarning()
     }
     
-    func updateView(steps: Int, goal:Int)
+    func updateRecord()
+    {
+        if (PFUser.currentUser() == nil)
+        {
+            // Not logged in
+            self.updateView(0, goal: 0)
+        }
+        else
+        {
+            // Logged in
+            CFHealthKitHelper.sharedInstance.fetchTodayRecordFromHealthKit(
+            {
+                (success, record) in
+                if (record == nil)
+                {
+                    self.updateView(0, goal: 0)
+                }
+                else
+                {
+                    self.updateView(Int(record!.step), goal: 0)
+                    CFRecordManager.saveRecord(record!, completion:
+                    {
+                        (success, record) in
+                         self.updateView(Int(record.step), goal: Int(record.goal))
+                    })
+                }
+            })
+        }
+    }
+    
+    func updateView(step: Int, goal:Int)
     {
         stepsTodayLabel.morphingEffect = .Evaporate
         goalTodayLabel.morphingEffect = .Evaporate
-        stepsTodayLabel.text = String(steps)
+        stepsTodayLabel.text = String(step)
         
         if (goal <= 0)
         {

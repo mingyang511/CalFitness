@@ -1,22 +1,33 @@
 //
-//  CFNotification.swift
+//  CFTaskManager.swift
 //  CalFitnesss
 //
-//  Created by Lee on 8/27/16.
-//  Copyright © 2016 BerkeleyIEOR. All rights reserved.
+//  Created by Lee on 1/16/17.
+//  Copyright © 2017 BerkeleyIEOR. All rights reserved.
 //
 
 import Foundation
-import Parse
 
 class CFTaskManager
 {
-    class func collectNewRecord(background:Bool, completion:(success:Bool) -> Void)
+    class func uploadTodayRecord(completion:(success:Bool) -> Void)
     {
-        CFHealthKitHelper.sharedInstance.fetchRecordOfToday(background)
+        if (CFUser.currentUser() != nil)
         {
-            (success) in
-            completion(success:success)
+            CFHealthKitHelper.sharedInstance.fetchTodayRecordFromHealthKit(
+            {
+                (success, record) in
+                if (record != nil)
+                {
+                    CFRecordManager.saveRecord(record!, completion:
+                    {
+                        (success, record) in
+                        completion(success: success)
+                    })
+                }
+                completion(success: false)
+            })
         }
+        completion(success: false)
     }
 }

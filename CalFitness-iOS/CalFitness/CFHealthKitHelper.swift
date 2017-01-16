@@ -38,43 +38,65 @@ class CFHealthKitHelper
         {
             (success: Bool, error: NSError?) -> Void in
             
-            if (completion != nil)
-            {
-                completion(success:success,error:error)
-            }
-            
             if (success)
             {
                 self.authorized = true
-                self.fetchRecordsOfPastWeek(
-                {
-                    (success) in
-                    completion(success: success, error: error)
-                })
+            }
+            
+            completion(success: success, error: error)
+        }
+    }
+    
+    // Method to fetch health record of today
+    func fetchTodayRecordFromHealthKit(completion:(success:Bool, record:CFRecord?) -> Void)
+    {
+        self.fetchRecordsFromHealthKit(
+            CFDateHelper.beginningOfToday(),
+            endDate: NSDate())
+        {
+            (success, records) in
+            
+            if (records.count > 0)
+            {
+                completion(success: success, record: records[0])
+            }
+            else
+            {
+                completion(success: success, record: nil)
             }
         }
     }
     
+    // Method to fetch health records of last week
+    func fetchLastWeekRecordsFromHealthKit(completion:(success:Bool, records:[CFRecord]) -> Void)
+    {
+        self.fetchRecordsFromHealthKit(
+            CFDateHelper.beginningOfDate(NSDate().dateByAddingTimeInterval(-3600*24*6)),
+            endDate: NSDate())
+        {
+            (success, records) in
+            completion(success: success, records: records)
+        }
+    }
+    
     // Method to fetch health records within the duration
-    func fetchRecordsFromHealthKit(startDate:NSDate, endDate:NSDate, completion:(success:Bool, records:NSArray) -> Void)
+    func fetchRecordsFromHealthKit(startDate:NSDate, endDate:NSDate, completion:(success:Bool, records:[CFRecord]) -> Void)
     {
         if(!authorized)
         {
             return
         }
         
+        var records = [CFRecord]()
         let days = Int(endDate.timeIntervalSinceDate(startDate)/(3600*24))
-        let records = NSMutableArray()
-        let nameFormatter  = NSDateFormatter()
-        
-        nameFormatter.dateFormat = "MM/dd/yy"
-        
         let today = NSDate()
+        
         for i in 0 ... days
         {
             let dayBefore = today.dateByAddingTimeInterval(-Double(days-i)*24 * 60 * 60)
-            let day = nameFormatter.stringFromDate(dayBefore)
-            records.addObject([0.0, dayBefore, day])
+            let record = CFRecord()
+            record.date = CFDateHelper.getDateString(dayBefore)
+            records.append(record)
         }
         
         let limit = 1000
@@ -87,24 +109,25 @@ class CFHealthKitHelper
             if let results = results as? [HKQuantitySample]
             {
                 print(results.count)
+                
                 for result in results
                 {
-                    let nameFormatter  = NSDateFormatter()
-                    nameFormatter.dateFormat = "MM/dd/yy"
-                    let day = nameFormatter.stringFromDate(result.startDate)
-                    
                     for i in  0...records.count-1
                     {
-                        let element = records[i] as! NSArray
-                        if(element[2] as! String == day)
+                        let record = records[i]
+                        let startDateString = CFDateHelper.getDateString(result.startDate)
+                        
+                        if (record.date == startDateString)
                         {
-                            let oldNumber: Float = element[0] as! Float
+                            let oldNumber: Float = record.step
                             let fullName = String(result.quantity)
                             let fullNameArr = fullName.characters.split{$0 == " "}.map(String.init)
                             let numberString: String = fullNameArr[0]
                             let number: Float = (numberString as NSString).floatValue
                             let newNumber: Float = oldNumber + number
-                            records[i] = [newNumber, result.startDate, day]
+                            
+                            record.date = startDateString
+                            record.step = newNumber
                         }
                     }
                 }
@@ -112,108 +135,112 @@ class CFHealthKitHelper
             }
             else
             {
-                completion(success: false, records: NSArray())
+                completion(success: false, records: [CFRecord]())
             }
         }
         
         healthStore.executeQuery(stepsSampleQuery)
     }
     
-    // Method to fetch health record of today
-    func fetchRecordOfToday(background:Bool, completion:(success:Bool) -> Void)
-    {
-        self.fetchRecordsFromHealthKit((PFUser.currentUser() != nil),
-                                       fetchAllFromServerAfterSaving: (PFUser.currentUser() != nil) && !background,
-                                       startDate: CFDateHelper.beginningOfToday(),
-                                       endDate: NSDate(),
-                                       completion: { (success) in completion(success: success)})
-    }
+//    // Method to fetch health record of today
+//    func fetchRecordOfToday(background:Bool, completion:(success:Bool) -> Void)
+//    {
+//        self.fetchRecordsFromHealthKit((PFUser.currentUser() != nil),
+//                                       fetchAllFromServerAfterSaving: (PFUser.currentUser() != nil) && !background,
+//                                       startDate: CFDateHelper.beginningOfToday(),
+//                                       endDate: NSDate(),
+//                                       completion: { (success) in completion(success: success)})
+//    }
+//    
+//    // Method to fetch health records of the past week
+//    func fetchRecordsOfPastWeek(completion:(success:Bool) -> Void)
+//    {
+//        self.fetchRecordsFromHealthKit((PFUser.currentUser() != nil),
+//                                       fetchAllFromServerAfterSaving: (PFUser.currentUser() != nil),
+//                                       startDate: CFDateHelper.beginningOfDate(NSDate().dateByAddingTimeInterval(-3600*24*6)),
+//                                       endDate: NSDate(),
+//                                       completion:
+//            {
+//                (success) in
+//                completion(success: success)
+//        })
+//    }
     
-    // Method to fetch health records of the past week
-    func fetchRecordsOfPastWeek(completion:(success:Bool) -> Void)
-    {
-        self.fetchRecordsFromHealthKit((PFUser.currentUser() != nil),
-                                       fetchAllFromServerAfterSaving: (PFUser.currentUser() != nil),
-                                       startDate: CFDateHelper.beginningOfDate(NSDate().dateByAddingTimeInterval(-3600*24*6)),
-                                       endDate: NSDate(),
-                                       completion: { (success) in completion(success: success)})
-    }
+//    // Method to fetch health records within the duration and save to the server
+//    func fetchRecordsFromHealthKit(saveToServer:Bool, fetchAllFromServerAfterSaving:Bool, startDate:NSDate, endDate:NSDate, completion:(success:Bool) -> Void)
+//    {
+//        self.fetchRecordsFromHealthKit(startDate, endDate:endDate)
+//        {
+//            (success, records) in
+//            
+//            if records.count > 0
+//            {
+//                dispatch_async(dispatch_get_main_queue(),
+//                {
+//                    if let delegate = self.delegate
+//                    {
+//                        let index = records.count-1 > 0 ? records.count-1 : 0
+//                        let steps = (records[index] as! NSArray)[0] as! Int
+//                        let goal = Int(CFRecordManager.getGoalForToday()*1000)
+//                        
+//                        delegate.updateView(steps, goal:goal)
+//                    }
+//                    
+//                    if (saveToServer)
+//                    {
+//                        self.uploadRecords(records, completion:
+//                        {
+//                            (success) in
+//                            
+//                            if (fetchAllFromServerAfterSaving)
+//                            {
+//                                CFRecordManager.fetchRecordsFromServerInBackground({(success, objects) in
+//                                    completion(success: success)
+//                                })
+//                            }
+//                            else
+//                            {
+//                                completion(success: success)
+//                            }
+//                        });
+//                    }
+//                    else
+//                    {
+//                        completion(success: success)
+//                    }
+//                })
+//            }
+//            else
+//            {
+//                completion(success: success)
+//            }
+//        }
+//    }
     
-    // Method to fetch health records within the duration and save to the server
-    func fetchRecordsFromHealthKit(saveToServer:Bool, fetchAllFromServerAfterSaving:Bool, startDate:NSDate, endDate:NSDate, completion:(success:Bool) -> Void)
-    {
-        self.fetchRecordsFromHealthKit(startDate, endDate:endDate)
-        {
-            (success, records) in
-            
-            if records.count > 0
-            {
-                dispatch_async(dispatch_get_main_queue(),
-                {
-                    if let delegate = self.delegate
-                    {
-                        let index = records.count-1 > 0 ? records.count-1 : 0
-                        let steps = (records[index] as! NSArray)[0] as! Int
-                        let goal = Int(CFRecordManager.getGoalForToday()*1000)
-                        
-                        delegate.updateView(steps, goal:goal)
-                    }
-                    
-                    if (saveToServer)
-                    {
-                        self.uploadRecords(records, completion:
-                        {
-                            (success) in
-                            
-                            if (fetchAllFromServerAfterSaving)
-                            {
-                                CFRecordManager.fetchRecordsFromServerInBackground({(success, objects) in
-                                    completion(success: success)
-                                })
-                            }
-                            else
-                            {
-                                completion(success: success)
-                            }
-                        });
-                    }
-                    else
-                    {
-                        completion(success: success)
-                    }
-                })
-            }
-            else
-            {
-                completion(success: success)
-            }
-        }
-    }
-    
-    // Method to upload record to server
-    func uploadRecords(records:NSArray, completion:(success:Bool) -> Void)
-    {
-        for i in 0 ... records.count-1
-        {
-            let steps = ((records[i] as! NSArray)[0] as! Double)/1000.0
-            let date = (records[i] as! NSArray)[1] as! NSDate
-            CFRecordManager.saveNewRecord(steps, date: date, completion:
-            {
-                (success, goal, date) in
-                
-                if (CFDateHelper.getDateString(date).isEqualToString(CFDateHelper.getDateString(NSDate()) as String))
-                {
-                    if let delegate = self.delegate
-                    {
-                        delegate.updateView(Int(steps * 1000), goal:Int(goal * 1000))
-                    }
-                }
-                
-                if i == records.count-1
-                {
-                    completion(success: success)
-                }
-            });
-        }
-    }
+//    // Method to upload record to server
+//    func uploadRecords(records:NSArray, completion:(success:Bool) -> Void)
+//    {
+//        for i in 0 ... records.count-1
+//        {
+//            let steps = ((records[i] as! NSArray)[0] as! Double)/1000.0
+//            let date = (records[i] as! NSArray)[1] as! NSDate
+//            CFRecordManager.saveNewRecord(steps, date: date, completion:
+//            {
+//                (success, goal, date) in
+//                
+//                if (CFDateHelper.getDateString(date).isEqualToString(CFDateHelper.getDateString(NSDate()) as String))
+//                {
+//                    if let delegate = self.delegate
+//                    {
+//                        delegate.updateView(Int(steps * 1000), goal:Int(goal * 1000))
+//                    }
+//                }
+//                
+//                if i == records.count-1
+//                {
+//                    completion(success: success)
+//                }
+//            });
+//        }
+//    }
 }

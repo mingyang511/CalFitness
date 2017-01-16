@@ -11,7 +11,7 @@ import Parse
 
 class CFAuthHelper
 {
-    class func login(application: UIApplication, completion:(success:Bool) -> Void)
+    class func performAuthVerification(application: UIApplication, completion:(success:Bool) -> Void)
     {
         PFAnonymousUtils.logInWithBlock(
         {
@@ -19,19 +19,19 @@ class CFAuthHelper
             
             if (error == nil)
             {
-                CFHealthKitHelper.sharedInstance.fetchRecordsOfPastWeek(
-                {
-                    (success) in
-                    completion(success: true)
-                })
+//                CFHealthKitHelper.sharedInstance.fetchRecordsOfPastWeek(
+//                {
+//                    (success) in
+//                    completion(success: true)
+//                })
             }
             else
             {
-                CFTaskManager.collectNewRecord(false)
-                {
-                    (success) in
-                    completion(success: false)
-                }
+//                CFTaskManager.collectNewRecord(false)
+//                {
+//                    (success) in
+//                    completion(success: false)
+//                }
             }
         })
     }

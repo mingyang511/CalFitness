@@ -22,8 +22,13 @@ class CFUser : PFUser
 {
     @NSManaged var group: NSNumber
     
+    func currentUser() -> CFUser?
+    {
+        return CFUser.currentUser() 
+    }
+    
     // Method to cehck user's group
-    class func userGroup() -> CFUserGroup
+    func userGroup() -> CFUserGroup
     {
         if let user = PFUser.currentUser()
         {

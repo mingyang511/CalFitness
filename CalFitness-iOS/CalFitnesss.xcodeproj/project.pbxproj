@@ -16,7 +16,6 @@
 		272D44981D18B61A00FC97A6 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 272D44951D18B61A00FC97A6 /* SystemConfiguration.framework */; };
 		272D449A1D18B62A00FC97A6 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 272D44991D18B62A00FC97A6 /* libz.tbd */; };
 		272D449C1D18B65C00FC97A6 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 272D449B1D18B65C00FC97A6 /* libsqlite3.tbd */; };
-		9B8EC1091D716AE500E70ABB /* CFTaskManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B8EC1081D716AE500E70ABB /* CFTaskManager.swift */; };
 		9BB267D81E2B5BF50049599C /* Graph.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BB267D71E2B5BF50049599C /* Graph.swift */; };
 		9BB267DB1E2B5C0C0049599C /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9BB267D91E2B5C0C0049599C /* Bolts.framework */; };
 		9BB267DC1E2B5C0C0049599C /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9BB267DA1E2B5C0C0049599C /* Parse.framework */; };
@@ -25,6 +24,9 @@
 		9BB267E51E2B72810049599C /* CFAuthHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BB267E41E2B72810049599C /* CFAuthHelper.swift */; };
 		9BB267E71E2B7B5C0049599C /* CFRecord.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BB267E61E2B7B5C0049599C /* CFRecord.swift */; };
 		9BB267E91E2CA45B0049599C /* CFUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BB267E81E2CA45B0049599C /* CFUser.swift */; };
+		9BB267ED1E2CAEA70049599C /* CFNotificationCenterHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BB267EC1E2CAEA70049599C /* CFNotificationCenterHelper.swift */; };
+		9BB267EF1E2CBB500049599C /* CFTaskManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BB267EE1E2CBB500049599C /* CFTaskManager.swift */; };
+		9BB267F11E2CBD500049599C /* AppDelegate+Auth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BB267F01E2CBD500049599C /* AppDelegate+Auth.swift */; };
 		9BB477811D86891B00D57F99 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9BB4776D1D86891B00D57F99 /* Info.plist */; };
 		9BB477821D86891B00D57F99 /* LTCharacterDiffResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BB4776E1D86891B00D57F99 /* LTCharacterDiffResult.swift */; };
 		9BB477831D86891B00D57F99 /* LTCharacterLimbo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BB4776F1D86891B00D57F99 /* LTCharacterLimbo.swift */; };
@@ -70,7 +72,6 @@
 		272D44951D18B61A00FC97A6 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		272D44991D18B62A00FC97A6 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
 		272D449B1D18B65C00FC97A6 /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
-		9B8EC1081D716AE500E70ABB /* CFTaskManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CFTaskManager.swift; sourceTree = "<group>"; };
 		9BB267D71E2B5BF50049599C /* Graph.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Graph.swift; sourceTree = "<group>"; };
 		9BB267D91E2B5C0C0049599C /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Bolts.framework; path = Frameworks/Bolts.framework; sourceTree = "<group>"; };
 		9BB267DA1E2B5C0C0049599C /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Parse.framework; path = Frameworks/Parse.framework; sourceTree = "<group>"; };
@@ -79,6 +80,9 @@
 		9BB267E41E2B72810049599C /* CFAuthHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CFAuthHelper.swift; sourceTree = "<group>"; };
 		9BB267E61E2B7B5C0049599C /* CFRecord.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CFRecord.swift; sourceTree = "<group>"; };
 		9BB267E81E2CA45B0049599C /* CFUser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CFUser.swift; sourceTree = "<group>"; };
+		9BB267EC1E2CAEA70049599C /* CFNotificationCenterHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CFNotificationCenterHelper.swift; sourceTree = "<group>"; };
+		9BB267EE1E2CBB500049599C /* CFTaskManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CFTaskManager.swift; sourceTree = "<group>"; };
+		9BB267F01E2CBD500049599C /* AppDelegate+Auth.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "AppDelegate+Auth.swift"; sourceTree = "<group>"; };
 		9BB4776D1D86891B00D57F99 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9BB4776E1D86891B00D57F99 /* LTCharacterDiffResult.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LTCharacterDiffResult.swift; sourceTree = "<group>"; };
 		9BB4776F1D86891B00D57F99 /* LTCharacterLimbo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LTCharacterLimbo.swift; sourceTree = "<group>"; };
@@ -144,6 +148,7 @@
 		9BB267EA1E2CA8A20049599C /* Helper */ = {
 			isa = PBXGroup;
 			children = (
+				9BB267EC1E2CAEA70049599C /* CFNotificationCenterHelper.swift */,
 				FB56B5F21CCA3B3700621716 /* CFHealthKitHelper.swift */,
 				9BCCF9D31D7162C700FA852D /* CFDateHelper.swift */,
 				9BB267E41E2B72810049599C /* CFAuthHelper.swift */,
@@ -154,7 +159,7 @@
 		9BB267EB1E2CA8B60049599C /* Manager */ = {
 			isa = PBXGroup;
 			children = (
-				9B8EC1081D716AE500E70ABB /* CFTaskManager.swift */,
+				9BB267EE1E2CBB500049599C /* CFTaskManager.swift */,
 				9BB267E21E2B62CA0049599C /* CFConfigManager.swift */,
 				9BCCF9D71D71635E00FA852D /* CFRecordManager.swift */,
 			);
@@ -272,6 +277,7 @@
 				FBBB00191CAEF39900DFFA34 /* AppDelegate.swift */,
 				9BCCF9DD1D7164EE00FA852D /* AppDelegate+ParseServer.swift */,
 				9BCCF9D91D71646A00FA852D /* AppDelegate+Notification.swift */,
+				9BB267F01E2CBD500049599C /* AppDelegate+Auth.swift */,
 				FBBB00281CAEF39900DFFA34 /* Info.plist */,
 				FB1C6F941D0C80960018526E /* View */,
 				FB1C6F951D0C80B20018526E /* Controller */,
@@ -377,6 +383,8 @@
 				9BB477831D86891B00D57F99 /* LTCharacterLimbo.swift in Sources */,
 				9BB4778C1D86891B00D57F99 /* LTMorphingLabel+Sparkle.swift in Sources */,
 				FB695AF01CCA180800A3F0D2 /* GraphBar.swift in Sources */,
+				9BB267F11E2CBD500049599C /* AppDelegate+Auth.swift in Sources */,
+				9BB267EF1E2CBB500049599C /* CFTaskManager.swift in Sources */,
 				9BB4778B1D86891B00D57F99 /* LTMorphingLabel+Pixelate.swift in Sources */,
 				9BCCF9D41D7162C700FA852D /* CFDateHelper.swift in Sources */,
 				9BB477821D86891B00D57F99 /* LTCharacterDiffResult.swift in Sources */,
@@ -396,10 +404,10 @@
 				9BB477841D86891B00D57F99 /* LTEasing.swift in Sources */,
 				9BB4778A1D86891B00D57F99 /* LTMorphingLabel+Fall.swift in Sources */,
 				9BB4778D1D86891B00D57F99 /* LTMorphingLabel.swift in Sources */,
+				9BB267ED1E2CAEA70049599C /* CFNotificationCenterHelper.swift in Sources */,
 				FBBB00221CAEF39900DFFA34 /* CalFitness.xcdatamodeld in Sources */,
 				9BCCF9DE1D7164EE00FA852D /* AppDelegate+ParseServer.swift in Sources */,
 				9BB477881D86891B00D57F99 /* LTMorphingLabel+Burn.swift in Sources */,
-				9B8EC1091D716AE500E70ABB /* CFTaskManager.swift in Sources */,
 				FB3705121CB8153B0091FDCF /* AboutViewController.swift in Sources */,
 				FBBB002F1CAF02AF00DFFA34 /* HistoryViewController.swift in Sources */,
 				9BB477871D86891B00D57F99 /* LTMorphingLabel+Anvil.swift in Sources */,

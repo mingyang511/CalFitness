@@ -12,31 +12,39 @@ import Parse
 class CFRecordManager
 {
     
+
+    
     // Method to create new record and save to server
-    class func saveNewRecord(step:NSNumber, date:NSDate, completion:(success:Bool, goal:Float, date:NSDate) -> Void)
+    class func saveRecord(step:Float, date:String, completion:(success:Bool, record: CFRecord) -> Void)
     {
         // Create new record
-        let record = createNewRecord(step, date:date)
+        let record = createRecord(step, date:date)
         
-        // Save record in background and retrieve goal
-        record.saveInBackgroundWithBlock
+        saveRecord(record)
         {
-            (success:Bool, error:NSError?) in
-            
-            let goal = record["goal"] as? Float
-            CFRecordManager.setGoal(goal!, forDate: date)
-            completion(success:success, goal:goal!, date:date);
+            (success, record) in
+            completion(success: success, record: record)
         }
     }
     
     // Method to create new record
-    class func createNewRecord(step:NSNumber, date:NSDate) -> CFRecord
+    class func createRecord(step:Float, date:String) -> CFRecord
     {
         let record = CFRecord()
         record.step = step;
-        record.date = CFDateHelper.getDateString(date);
+        record.date = date;
         record.user = PFUser.currentUser();
         return record;
+    }
+    
+    class func saveRecord(record: CFRecord, completion:(success:Bool, record: CFRecord) -> Void)
+    {
+        // Save record in background and retrieve goal
+        record.saveInBackgroundWithBlock
+        {
+            (success:Bool, error:NSError?) in
+            completion(success: success, record: record)
+        }
     }
     
     // Method to fetch records from server
