@@ -11,47 +11,67 @@ import HealthKit
 import Parse
 import Bolts
 
-protocol HealthDelegate {
+protocol CFHealthDelegate
+{
     func updateView(steps: Int, goal:Int)
 }
 
-class HealthController {
-    var delegate: HealthDelegate?
+class CFHealthController
+{
+    var delegate: CFHealthDelegate?
     var authorized: Bool = false
+    
     let uuid = NSUUID().UUIDString
     let healthStore = HKHealthStore()
+   
     let readDataTypes: Set<HKObjectType> = [HKObjectType.quantityTypeForIdentifier(HKQuantityTypeIdentifierStepCount)!]
     let writeDataTypes: Set<HKSampleType> = []
-    static let sharedInstance = HealthController()
+    
+    static let sharedInstance = CFHealthController()
+    
     private init() {}
  
-    func authorizeHealthKit(completion: ((success:Bool, error:NSError?) -> Void)!) {
-        healthStore.requestAuthorizationToShareTypes(writeDataTypes, readTypes: readDataTypes) {
+    // Method to request HealthKit authorization
+    func authorizeHealthKit(completion: ((success:Bool, error:NSError?) -> Void)!)
+    {
+        healthStore.requestAuthorizationToShareTypes(writeDataTypes, readTypes: readDataTypes)
+        {
             (success: Bool, error: NSError?) -> Void in
-            if( completion != nil ){
+            
+            if (completion != nil)
+            {
                 completion(success:success,error:error)
             }
             
-            if success {
+            if (success)
+            {
                 self.authorized = true
-                self.getRecordsOfPastWeek({ (success) in
+                self.fetchRecordsOfPastWeek(
+                {
+                    (success) in
                     completion(success: success, error: error)
                 })
             }
         }
     }
     
-    func fetchRecordsFromHealthKit(startDate:NSDate, endDate:NSDate, completion:(success:Bool, records:NSArray) -> Void) {
-        if(!authorized){
+    // Method to fetch health records within the duration
+    func fetchRecordsFromHealthKit(startDate:NSDate, endDate:NSDate, completion:(success:Bool, records:NSArray) -> Void)
+    {
+        if(!authorized)
+        {
             return
         }
         
         let days = Int(endDate.timeIntervalSinceDate(startDate)/(3600*24))
         let records = NSMutableArray()
         let nameFormatter  = NSDateFormatter()
+        
         nameFormatter.dateFormat = "MM/dd/yy"
+        
         let today = NSDate()
-        for i in 0 ... days {
+        for i in 0 ... days
+        {
             let dayBefore = today.dateByAddingTimeInterval(-Double(days-i)*24 * 60 * 60)
             let day = nameFormatter.stringFromDate(dayBefore)
             records.addObject([0.0, dayBefore, day])
@@ -60,16 +80,24 @@ class HealthController {
         let limit = 1000
         let predicate = HKQuery.predicateForSamplesWithStartDate(startDate, endDate: endDate, options: .StrictStartDate)
         let stepsCount = HKQuantityType.quantityTypeForIdentifier(HKQuantityTypeIdentifierStepCount)
-        let stepsSampleQuery = HKSampleQuery(sampleType: stepsCount!, predicate: predicate, limit: limit, sortDescriptors: nil){ (sampleQuery, results, error ) -> Void in
-            if let results = results as? [HKQuantitySample] {
+        let stepsSampleQuery = HKSampleQuery(sampleType: stepsCount!, predicate: predicate, limit: limit, sortDescriptors: nil)
+        {
+            (sampleQuery, results, error ) -> Void in
+            
+            if let results = results as? [HKQuantitySample]
+            {
                 print(results.count)
-                for result in results {
+                for result in results
+                {
                     let nameFormatter  = NSDateFormatter()
                     nameFormatter.dateFormat = "MM/dd/yy"
                     let day = nameFormatter.stringFromDate(result.startDate)
-                    for i in  0...records.count-1 {
+                    
+                    for i in  0...records.count-1
+                    {
                         let element = records[i] as! NSArray
-                        if(element[2] as! String == day){
+                        if(element[2] as! String == day)
+                        {
                             let oldNumber: Float = element[0] as! Float
                             let fullName = String(result.quantity)
                             let fullNameArr = fullName.characters.split{$0 == " "}.map(String.init)
@@ -81,7 +109,9 @@ class HealthController {
                     }
                 }
                 completion(success: true, records: records)
-            } else {
+            }
+            else
+            {
                 completion(success: false, records: NSArray())
             }
         }
@@ -89,65 +119,98 @@ class HealthController {
         healthStore.executeQuery(stepsSampleQuery)
     }
     
-    func getRecordOfToday(background:Bool, completion:(success:Bool) -> Void) {
+    // Method to fetch health record of today
+    func fetchRecordOfToday(background:Bool, completion:(success:Bool) -> Void)
+    {
         self.fetchRecordsFromHealthKit((PFUser.currentUser() != nil),
                                        fetchAllFromServerAfterSaving: (PFUser.currentUser() != nil) && !background,
-                                       startDate: CFDate.beginningOfToday(),
+                                       startDate: CFDateHelper.beginningOfToday(),
                                        endDate: NSDate(),
                                        completion: { (success) in completion(success: success)})
     }
     
-    func getRecordsOfPastWeek(completion:(success:Bool) -> Void) {
+    // Method to fetch health records of the past week
+    func fetchRecordsOfPastWeek(completion:(success:Bool) -> Void)
+    {
         self.fetchRecordsFromHealthKit((PFUser.currentUser() != nil),
                                        fetchAllFromServerAfterSaving: (PFUser.currentUser() != nil),
-                                       startDate: CFDate.beginningOfDate(NSDate().dateByAddingTimeInterval(-3600*24*6)),
+                                       startDate: CFDateHelper.beginningOfDate(NSDate().dateByAddingTimeInterval(-3600*24*6)),
                                        endDate: NSDate(),
                                        completion: { (success) in completion(success: success)})
     }
     
-    func fetchRecordsFromHealthKit(saveToServer:Bool, fetchAllFromServerAfterSaving:Bool, startDate:NSDate, endDate:NSDate, completion:(success:Bool) -> Void) {
-        self.fetchRecordsFromHealthKit(startDate, endDate:endDate) { (success, records) in
-            if records.count > 0 {
-                dispatch_async(dispatch_get_main_queue(),{
-                    if let delegate = self.delegate {
+    // Method to fetch health records within the duration and save to the server
+    func fetchRecordsFromHealthKit(saveToServer:Bool, fetchAllFromServerAfterSaving:Bool, startDate:NSDate, endDate:NSDate, completion:(success:Bool) -> Void)
+    {
+        self.fetchRecordsFromHealthKit(startDate, endDate:endDate)
+        {
+            (success, records) in
+            
+            if records.count > 0
+            {
+                dispatch_async(dispatch_get_main_queue(),
+                {
+                    if let delegate = self.delegate
+                    {
                         let index = records.count-1 > 0 ? records.count-1 : 0
                         let steps = (records[index] as! NSArray)[0] as! Int
-                        let goal = Int(CFStore.getGoalForToday()*1000)
+                        let goal = Int(CFRecordManager.getGoalForToday()*1000)
+                        
                         delegate.updateView(steps, goal:goal)
                     }
-                    if (saveToServer){
-                        self.uploadRecords(records, completion:{(success) in
-                            if (fetchAllFromServerAfterSaving) {
-                                CFStore.fetchRecordsFromServerInBackground({(success, objects) in
+                    
+                    if (saveToServer)
+                    {
+                        self.uploadRecords(records, completion:
+                        {
+                            (success) in
+                            
+                            if (fetchAllFromServerAfterSaving)
+                            {
+                                CFRecordManager.fetchRecordsFromServerInBackground({(success, objects) in
                                     completion(success: success)
                                 })
-                            } else {
+                            }
+                            else
+                            {
                                 completion(success: success)
                             }
                         });
-                    } else {
+                    }
+                    else
+                    {
                         completion(success: success)
                     }
                 })
-            } else {
+            }
+            else
+            {
                 completion(success: success)
             }
         }
     }
     
-    func uploadRecords(records:NSArray, completion:(success:Bool) -> Void){
-        for i in 0 ... records.count-1 {
+    // Method to upload record to server
+    func uploadRecords(records:NSArray, completion:(success:Bool) -> Void)
+    {
+        for i in 0 ... records.count-1
+        {
             let steps = ((records[i] as! NSArray)[0] as! Double)/1000.0
             let date = (records[i] as! NSArray)[1] as! NSDate
-            CFRecord.saveNewRecord(steps, goal:CFStore.defaultGoal(),date: date, newGoal: false, completion:{(success, goal, date) in
-                print("%d %d %d", i, steps, goal)
-                if (CFDate.getDateString(date).isEqualToString(CFDate.getDateString(NSDate()) as String)) {
-                    if let delegate = self.delegate {
-                        delegate.updateView(Int(steps*1000), goal:Int(goal*1000))
+            CFRecordManager.saveNewRecord(steps, date: date, completion:
+            {
+                (success, goal, date) in
+                
+                if (CFDateHelper.getDateString(date).isEqualToString(CFDateHelper.getDateString(NSDate()) as String))
+                {
+                    if let delegate = self.delegate
+                    {
+                        delegate.updateView(Int(steps * 1000), goal:Int(goal * 1000))
                     }
                 }
                 
-                if i == records.count-1 {
+                if i == records.count-1
+                {
                     completion(success: success)
                 }
             });

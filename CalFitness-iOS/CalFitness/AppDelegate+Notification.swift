@@ -11,44 +11,51 @@ import Parse
 
 extension AppDelegate {
     
-    func application(application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: NSData) {
+    // Method to register for remote notification
+    func application(application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: NSData)
+    {
         let currentInstallation = PFInstallation.currentInstallation()
         currentInstallation["user"] = PFUser.currentUser()
         currentInstallation.setDeviceTokenFromData(deviceToken)
         currentInstallation.saveInBackground()
     }
     
+    // Method to receive remote notifications
     func application(application: UIApplication,
                      didReceiveRemoteNotification userInfo: [NSObject : AnyObject],
-                     fetchCompletionHandler completionHandler: (UIBackgroundFetchResult) -> Void){
+                     fetchCompletionHandler completionHandler: (UIBackgroundFetchResult) -> Void)
+    {
         let aps = userInfo["aps"] as! [String: AnyObject];
         let type = aps["type"] as! String;
-        
-        if type == "create" {
-            CFTask.createNewGoal {(success) in
+ 
+        if type == "collect"
+        {
+            CFTaskManager.collectNewRecord (true)
+            {
+                (success) in
                 completionHandler(.NewData);
             };
-        } else if type == "notify" {
-            CFTask.notifyUser {(success) in
-                completionHandler(.NewData);
-            };
-        } else if type == "collect" {
-            CFTask.collectNewRecord (true) {(success) in
-                completionHandler(.NewData);
-            };
-        } else {
+        }
+        else
+        {
             completionHandler(.NoData);
         }
     }
     
+    // Method to perform background tasks
     func application(application: UIApplication, performFetchWithCompletionHandler
-        completionHandler: (UIBackgroundFetchResult) -> Void) {
-        CFTask.collectNewRecord(true)  { (success) in
+        completionHandler: (UIBackgroundFetchResult) -> Void)
+    {
+        CFTaskManager.collectNewRecord(true)
+        {
+            (success) in
             completionHandler(.NewData);
         };
     }
     
-    func registerRemoteNotification(application:UIApplication) {
+    // Method to register remote notification
+    func registerRemoteNotification(application:UIApplication)
+    {
         let userNotificationTypes: UIUserNotificationType = [.Alert, .Badge, .Sound]
         let settings = UIUserNotificationSettings(forTypes: userNotificationTypes, categories: nil)
         application.registerUserNotificationSettings(settings)

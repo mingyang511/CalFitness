@@ -16,11 +16,15 @@
 		272D44981D18B61A00FC97A6 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 272D44951D18B61A00FC97A6 /* SystemConfiguration.framework */; };
 		272D449A1D18B62A00FC97A6 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 272D44991D18B62A00FC97A6 /* libz.tbd */; };
 		272D449C1D18B65C00FC97A6 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 272D449B1D18B65C00FC97A6 /* libsqlite3.tbd */; };
-		9B8EC1091D716AE500E70ABB /* CFTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B8EC1081D716AE500E70ABB /* CFTask.swift */; };
+		9B8EC1091D716AE500E70ABB /* CFTaskManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B8EC1081D716AE500E70ABB /* CFTaskManager.swift */; };
 		9BB267D81E2B5BF50049599C /* Graph.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BB267D71E2B5BF50049599C /* Graph.swift */; };
 		9BB267DB1E2B5C0C0049599C /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9BB267D91E2B5C0C0049599C /* Bolts.framework */; };
 		9BB267DC1E2B5C0C0049599C /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9BB267DA1E2B5C0C0049599C /* Parse.framework */; };
 		9BB267DF1E2B5DAD0049599C /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BB267DE1E2B5DAD0049599C /* Constants.swift */; };
+		9BB267E11E2B61D50049599C /* CFUserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BB267E01E2B61D50049599C /* CFUserManager.swift */; };
+		9BB267E31E2B62CA0049599C /* CFConfigManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BB267E21E2B62CA0049599C /* CFConfigManager.swift */; };
+		9BB267E51E2B72810049599C /* CFAuthHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BB267E41E2B72810049599C /* CFAuthHelper.swift */; };
+		9BB267E71E2B7B5C0049599C /* CFRecord.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BB267E61E2B7B5C0049599C /* CFRecord.swift */; };
 		9BB477811D86891B00D57F99 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9BB4776D1D86891B00D57F99 /* Info.plist */; };
 		9BB477821D86891B00D57F99 /* LTCharacterDiffResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BB4776E1D86891B00D57F99 /* LTCharacterDiffResult.swift */; };
 		9BB477831D86891B00D57F99 /* LTCharacterLimbo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BB4776F1D86891B00D57F99 /* LTCharacterLimbo.swift */; };
@@ -39,14 +43,13 @@
 		9BB477901D86891B00D57F99 /* Fragment.png in Resources */ = {isa = PBXBuildFile; fileRef = 9BB4777E1D86891B00D57F99 /* Fragment.png */; };
 		9BB477911D86891B00D57F99 /* Smoke.png in Resources */ = {isa = PBXBuildFile; fileRef = 9BB4777F1D86891B00D57F99 /* Smoke.png */; };
 		9BB477921D86891B00D57F99 /* Sparkle.png in Resources */ = {isa = PBXBuildFile; fileRef = 9BB477801D86891B00D57F99 /* Sparkle.png */; };
-		9BCCF9D21D71626800FA852D /* CFStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BCCF9D11D71626800FA852D /* CFStore.swift */; };
-		9BCCF9D41D7162C700FA852D /* CFDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BCCF9D31D7162C700FA852D /* CFDate.swift */; };
-		9BCCF9D81D71635E00FA852D /* CFRecord.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BCCF9D71D71635E00FA852D /* CFRecord.swift */; };
+		9BCCF9D41D7162C700FA852D /* CFDateHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BCCF9D31D7162C700FA852D /* CFDateHelper.swift */; };
+		9BCCF9D81D71635E00FA852D /* CFRecordManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BCCF9D71D71635E00FA852D /* CFRecordManager.swift */; };
 		9BCCF9DA1D71646A00FA852D /* AppDelegate+Notification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BCCF9D91D71646A00FA852D /* AppDelegate+Notification.swift */; };
-		9BCCF9DE1D7164EE00FA852D /* AppDelegate+Parse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BCCF9DD1D7164EE00FA852D /* AppDelegate+Parse.swift */; };
+		9BCCF9DE1D7164EE00FA852D /* AppDelegate+ParseServer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BCCF9DD1D7164EE00FA852D /* AppDelegate+ParseServer.swift */; };
 		FB3705121CB8153B0091FDCF /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB3705111CB8153B0091FDCF /* AboutViewController.swift */; };
 		FB56B5F11CCA3A7A00621716 /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FB56B5F01CCA3A7A00621716 /* HealthKit.framework */; };
-		FB56B5F31CCA3B3700621716 /* HealthController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB56B5F21CCA3B3700621716 /* HealthController.swift */; };
+		FB56B5F31CCA3B3700621716 /* CFHealthController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB56B5F21CCA3B3700621716 /* CFHealthController.swift */; };
 		FB695AF01CCA180800A3F0D2 /* GraphBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB695AEF1CCA180800A3F0D2 /* GraphBar.swift */; };
 		FBBB001A1CAEF39900DFFA34 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBBB00191CAEF39900DFFA34 /* AppDelegate.swift */; };
 		FBBB001C1CAEF39900DFFA34 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBBB001B1CAEF39900DFFA34 /* HomeViewController.swift */; };
@@ -67,11 +70,15 @@
 		272D44951D18B61A00FC97A6 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		272D44991D18B62A00FC97A6 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
 		272D449B1D18B65C00FC97A6 /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
-		9B8EC1081D716AE500E70ABB /* CFTask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CFTask.swift; sourceTree = "<group>"; };
+		9B8EC1081D716AE500E70ABB /* CFTaskManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CFTaskManager.swift; sourceTree = "<group>"; };
 		9BB267D71E2B5BF50049599C /* Graph.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Graph.swift; sourceTree = "<group>"; };
 		9BB267D91E2B5C0C0049599C /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Bolts.framework; path = Frameworks/Bolts.framework; sourceTree = "<group>"; };
 		9BB267DA1E2B5C0C0049599C /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Parse.framework; path = Frameworks/Parse.framework; sourceTree = "<group>"; };
 		9BB267DE1E2B5DAD0049599C /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		9BB267E01E2B61D50049599C /* CFUserManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CFUserManager.swift; sourceTree = "<group>"; };
+		9BB267E21E2B62CA0049599C /* CFConfigManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CFConfigManager.swift; sourceTree = "<group>"; };
+		9BB267E41E2B72810049599C /* CFAuthHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CFAuthHelper.swift; sourceTree = "<group>"; };
+		9BB267E61E2B7B5C0049599C /* CFRecord.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CFRecord.swift; sourceTree = "<group>"; };
 		9BB4776D1D86891B00D57F99 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9BB4776E1D86891B00D57F99 /* LTCharacterDiffResult.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LTCharacterDiffResult.swift; sourceTree = "<group>"; };
 		9BB4776F1D86891B00D57F99 /* LTCharacterLimbo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LTCharacterLimbo.swift; sourceTree = "<group>"; };
@@ -91,15 +98,14 @@
 		9BB4777E1D86891B00D57F99 /* Fragment.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Fragment.png; sourceTree = "<group>"; };
 		9BB4777F1D86891B00D57F99 /* Smoke.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Smoke.png; sourceTree = "<group>"; };
 		9BB477801D86891B00D57F99 /* Sparkle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Sparkle.png; sourceTree = "<group>"; };
-		9BCCF9D11D71626800FA852D /* CFStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CFStore.swift; sourceTree = "<group>"; };
-		9BCCF9D31D7162C700FA852D /* CFDate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CFDate.swift; sourceTree = "<group>"; };
-		9BCCF9D71D71635E00FA852D /* CFRecord.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CFRecord.swift; sourceTree = "<group>"; };
+		9BCCF9D31D7162C700FA852D /* CFDateHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CFDateHelper.swift; sourceTree = "<group>"; };
+		9BCCF9D71D71635E00FA852D /* CFRecordManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CFRecordManager.swift; sourceTree = "<group>"; };
 		9BCCF9D91D71646A00FA852D /* AppDelegate+Notification.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "AppDelegate+Notification.swift"; sourceTree = "<group>"; };
-		9BCCF9DD1D7164EE00FA852D /* AppDelegate+Parse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "AppDelegate+Parse.swift"; sourceTree = "<group>"; };
+		9BCCF9DD1D7164EE00FA852D /* AppDelegate+ParseServer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "AppDelegate+ParseServer.swift"; sourceTree = "<group>"; };
 		FB3705111CB8153B0091FDCF /* AboutViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
 		FB56B5ED1CCA3A2800621716 /* CalFitness.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = CalFitness.entitlements; sourceTree = "<group>"; };
 		FB56B5F01CCA3A7A00621716 /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = System/Library/Frameworks/HealthKit.framework; sourceTree = SDKROOT; };
-		FB56B5F21CCA3B3700621716 /* HealthController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HealthController.swift; sourceTree = "<group>"; };
+		FB56B5F21CCA3B3700621716 /* CFHealthController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CFHealthController.swift; sourceTree = "<group>"; };
 		FB695AEF1CCA180800A3F0D2 /* GraphBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GraphBar.swift; sourceTree = "<group>"; };
 		FBBB00161CAEF39900DFFA34 /* CalFitness.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CalFitness.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FBBB00191CAEF39900DFFA34 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -196,11 +202,14 @@
 			isa = PBXGroup;
 			children = (
 				FBBB00201CAEF39900DFFA34 /* CalFitness.xcdatamodeld */,
-				FB56B5F21CCA3B3700621716 /* HealthController.swift */,
-				9BCCF9D11D71626800FA852D /* CFStore.swift */,
-				9B8EC1081D716AE500E70ABB /* CFTask.swift */,
-				9BCCF9D71D71635E00FA852D /* CFRecord.swift */,
-				9BCCF9D31D7162C700FA852D /* CFDate.swift */,
+				FB56B5F21CCA3B3700621716 /* CFHealthController.swift */,
+				9B8EC1081D716AE500E70ABB /* CFTaskManager.swift */,
+				9BB267E21E2B62CA0049599C /* CFConfigManager.swift */,
+				9BCCF9D71D71635E00FA852D /* CFRecordManager.swift */,
+				9BB267E61E2B7B5C0049599C /* CFRecord.swift */,
+				9BB267E01E2B61D50049599C /* CFUserManager.swift */,
+				9BCCF9D31D7162C700FA852D /* CFDateHelper.swift */,
+				9BB267E41E2B72810049599C /* CFAuthHelper.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -247,7 +256,7 @@
 				FB56B5ED1CCA3A2800621716 /* CalFitness.entitlements */,
 				9BB267DE1E2B5DAD0049599C /* Constants.swift */,
 				FBBB00191CAEF39900DFFA34 /* AppDelegate.swift */,
-				9BCCF9DD1D7164EE00FA852D /* AppDelegate+Parse.swift */,
+				9BCCF9DD1D7164EE00FA852D /* AppDelegate+ParseServer.swift */,
 				9BCCF9D91D71646A00FA852D /* AppDelegate+Notification.swift */,
 				FBBB00281CAEF39900DFFA34 /* Info.plist */,
 				FB1C6F941D0C80960018526E /* View */,
@@ -347,31 +356,34 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9BB267E51E2B72810049599C /* CFAuthHelper.swift in Sources */,
 				9BB477861D86891B00D57F99 /* LTMorphingEffect.swift in Sources */,
 				9BB477831D86891B00D57F99 /* LTCharacterLimbo.swift in Sources */,
 				9BB4778C1D86891B00D57F99 /* LTMorphingLabel+Sparkle.swift in Sources */,
 				FB695AF01CCA180800A3F0D2 /* GraphBar.swift in Sources */,
 				9BB4778B1D86891B00D57F99 /* LTMorphingLabel+Pixelate.swift in Sources */,
-				9BCCF9D41D7162C700FA852D /* CFDate.swift in Sources */,
+				9BCCF9D41D7162C700FA852D /* CFDateHelper.swift in Sources */,
 				9BB477821D86891B00D57F99 /* LTCharacterDiffResult.swift in Sources */,
 				9BB477851D86891B00D57F99 /* LTEmitterView.swift in Sources */,
 				9BCCF9DA1D71646A00FA852D /* AppDelegate+Notification.swift in Sources */,
 				FBBB001C1CAEF39900DFFA34 /* HomeViewController.swift in Sources */,
-				FB56B5F31CCA3B3700621716 /* HealthController.swift in Sources */,
+				9BB267E11E2B61D50049599C /* CFUserManager.swift in Sources */,
+				FB56B5F31CCA3B3700621716 /* CFHealthController.swift in Sources */,
+				9BB267E71E2B7B5C0049599C /* CFRecord.swift in Sources */,
 				9BB267DF1E2B5DAD0049599C /* Constants.swift in Sources */,
 				9BB477891D86891B00D57F99 /* LTMorphingLabel+Evaporate.swift in Sources */,
+				9BB267E31E2B62CA0049599C /* CFConfigManager.swift in Sources */,
 				FBBB001A1CAEF39900DFFA34 /* AppDelegate.swift in Sources */,
 				9BB4778E1D86891B00D57F99 /* LTStringDiffResult.swift in Sources */,
-				9BCCF9D81D71635E00FA852D /* CFRecord.swift in Sources */,
+				9BCCF9D81D71635E00FA852D /* CFRecordManager.swift in Sources */,
 				9BB267D81E2B5BF50049599C /* Graph.swift in Sources */,
 				9BB477841D86891B00D57F99 /* LTEasing.swift in Sources */,
-				9BCCF9D21D71626800FA852D /* CFStore.swift in Sources */,
 				9BB4778A1D86891B00D57F99 /* LTMorphingLabel+Fall.swift in Sources */,
 				9BB4778D1D86891B00D57F99 /* LTMorphingLabel.swift in Sources */,
 				FBBB00221CAEF39900DFFA34 /* CalFitness.xcdatamodeld in Sources */,
-				9BCCF9DE1D7164EE00FA852D /* AppDelegate+Parse.swift in Sources */,
+				9BCCF9DE1D7164EE00FA852D /* AppDelegate+ParseServer.swift in Sources */,
 				9BB477881D86891B00D57F99 /* LTMorphingLabel+Burn.swift in Sources */,
-				9B8EC1091D716AE500E70ABB /* CFTask.swift in Sources */,
+				9B8EC1091D716AE500E70ABB /* CFTaskManager.swift in Sources */,
 				FB3705121CB8153B0091FDCF /* AboutViewController.swift in Sources */,
 				FBBB002F1CAF02AF00DFFA34 /* HistoryViewController.swift in Sources */,
 				9BB477871D86891B00D57F99 /* LTMorphingLabel+Anvil.swift in Sources */,

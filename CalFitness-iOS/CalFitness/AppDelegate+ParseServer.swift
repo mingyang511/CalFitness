@@ -9,8 +9,12 @@
 import Foundation
 import Parse
 
-extension AppDelegate {
-    func registerParse() {
+extension AppDelegate
+{
+    
+    // Method to register for Parse Server
+    func registerParseServer()
+    {
         Parse.enableLocalDatastore()
         Parse.initializeWithConfiguration(ParseClientConfiguration(block: {(configuration:ParseMutableClientConfiguration) -> Void in
             configuration.localDatastoreEnabled = true;
@@ -21,9 +25,16 @@ extension AppDelegate {
         }))
     }
     
-    func fetchData (){
-        CFStore.fetchRecordsFromServer();
-        CFStore.fetchConfigFromServer();
-        CFStore.fetchUserFromServer();
+    // Method to fetch data from Parse Server
+    func fetchData()
+    {
+        CFRecordManager.fetchRecordsFromServer();
+        CFConfigManager.fetchConfigFromServer();
+        CFUserManager.fetchUserFromServer();
+    }
+    
+    func uploadData()
+    {
+        
     }
 }
