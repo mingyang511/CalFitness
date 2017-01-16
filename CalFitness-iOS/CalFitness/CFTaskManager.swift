@@ -19,13 +19,30 @@ class CFTaskManager
                 (success, record) in
                 if (record != nil)
                 {
-                    CFRecordManager.saveRecord(record!, completion:
+                    CFRecordManager.saveTodayRecordToServer(record!, completion:
                     {
                         (success, record) in
                         completion(success: success)
                     })
                 }
                 completion(success: false)
+            })
+        }
+        completion(success: false)
+    }
+    
+    class func uploadLastWeekRecords(completion:(success:Bool) -> Void)
+    {
+        if (CFUser.currentUser() != nil)
+        {
+            CFHealthKitHelper.sharedInstance.fetchLastWeekRecordsFromHealthKit(
+            {
+                (success, records) in
+                CFRecordManager.saveLastWeekRecordsToServer(records, completion:
+                {
+                    (success, record) in
+                    completion(success: success)
+                })
             })
         }
         completion(success: false)

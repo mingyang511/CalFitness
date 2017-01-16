@@ -24,12 +24,14 @@ extension AppDelegate
                     if (success)
                     {
                         self.registerRemoteNotification(application)
+                        CFTaskManager.uploadLastWeekRecords({ (success) in })
                     }
             })
         }
         else
         {
             self.registerRemoteNotification(application)
+            CFTaskManager.uploadLastWeekRecords({ (success) in })
             CFNotificationCenterHelper.postApplicationWillEnterForegroundNotification()
         }
     }

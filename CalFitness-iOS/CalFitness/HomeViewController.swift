@@ -10,7 +10,7 @@ import UIKit
 import Parse
 import Bolts
 
-class HomeViewController: UIViewController, CFHealthDelegate
+class HomeViewController: UIViewController
 {
     @IBOutlet var historyButton: UIButton!
     @IBOutlet var infoButton: UIButton!
@@ -30,6 +30,9 @@ class HomeViewController: UIViewController, CFHealthDelegate
         self.infoButton.imageView?.contentMode = UIViewContentMode.ScaleAspectFit
         self.infoButton.imageEdgeInsets = self.historyButton.imageEdgeInsets 
         
+        self.stepsTodayLabel.morphingEffect = .Evaporate
+        self.goalTodayLabel.morphingEffect = .Evaporate
+        
         //Navigation View Controller title colors
         self.navigationController!.navigationBar.tintColor = UIColor(red: 6/255.0, green: 29/255.0, blue: 65/255.0, alpha: 1.0)
         
@@ -38,7 +41,6 @@ class HomeViewController: UIViewController, CFHealthDelegate
     
     override func viewWillAppear(animated: Bool)
     {
-        CFHealthKitHelper.sharedInstance.delegate = self
         updateRecord()
     }
     
@@ -52,37 +54,49 @@ class HomeViewController: UIViewController, CFHealthDelegate
         if (PFUser.currentUser() == nil)
         {
             // Not logged in
-            self.updateView(0, goal: 0)
+            self.updateStepLabel(0)
+            self.updateGoalLabel(0)
         }
         else
         {
             // Logged in
+            let cachedRecord = CFRecordManager.fetchTodayRecordFromLocal()
+            
+            if (cachedRecord != nil)
+            {
+                dispatch_async(dispatch_get_main_queue(),
+                {
+                    self.updateStepLabel(Int(cachedRecord!.step))
+                    self.updateGoalLabel(Int(cachedRecord!.goal))
+                })
+            }
+            
             CFHealthKitHelper.sharedInstance.fetchTodayRecordFromHealthKit(
             {
                 (success, record) in
-                if (record == nil)
+                if (record != nil)
                 {
-                    self.updateView(0, goal: 0)
-                }
-                else
-                {
-                    self.updateView(Int(record!.step), goal: 0)
-                    CFRecordManager.saveRecord(record!, completion:
+                    self.updateStepLabel(Int(record!.step))
+                    CFRecordManager.saveTodayRecordToServer(record!, completion:
                     {
                         (success, record) in
-                         self.updateView(Int(record.step), goal: Int(record.goal))
+                        dispatch_async(dispatch_get_main_queue(),
+                        {
+                            self.updateGoalLabel(Int(record.goal))
+                        })
                     })
                 }
             })
         }
     }
     
-    func updateView(step: Int, goal:Int)
+    func updateStepLabel(step: Int)
     {
-        stepsTodayLabel.morphingEffect = .Evaporate
-        goalTodayLabel.morphingEffect = .Evaporate
         stepsTodayLabel.text = String(step)
-        
+    }
+    
+    func updateGoalLabel(goal:Int)
+    {
         if (goal <= 0)
         {
             goalTodayLabel.text = "NA"

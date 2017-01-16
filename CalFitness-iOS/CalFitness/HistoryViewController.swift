@@ -22,54 +22,51 @@ class HistoryViewController: UIViewController
     override func viewDidLoad()
     {
         super.viewDidLoad()
+        self.updateViewWithRecordsFromLocal()
     }
     
     @IBAction func UploadData(sender: AnyObject)
     {
-        self.spinner.startAnimating()
-        self.updateButton.userInteractionEnabled = false;
-        self.updateViewWithRecords()
-        
-//        CFHealthKitHelper.sharedInstance.fetchRecordsOfPastWeek(
-//        {
-//            (success) in
-//            
-//            self.updateViewWithRecords()
-//            self.spinner.stopAnimating()
-//            self.updateButton.userInteractionEnabled = true;
-//        })
+        self.updateViewWithRecordsFromHealthKit()
     }
     
     override func viewWillAppear(animated: Bool)
     {
-        self.updateViewWithRecords()
+        self.updateViewWithRecordsFromServer()
     }
     
-    func updateViewWithRecords()
+    func updateViewWithRecordsFromHealthKit()
     {
-        CFRecordManager.getRecordsForLastWeek
+        self.spinner.startAnimating()
+        self.updateButton.userInteractionEnabled = false;
+        
+        CFHealthKitHelper.sharedInstance.fetchLastWeekRecordsFromHealthKit(
         {
-            (success, objects) in
-            let records = NSMutableArray()
-            if (objects!.count < 7)
+            (success, records) in
+            CFRecordManager.saveLastWeekRecordsToServer(records, completion:
             {
-                for i in 0 ... (6 - (objects!.count))
-                {
-                    records.addObject([Float(0),CFDateHelper.beginningOfDate(NSDate().dateByAddingTimeInterval(3600*24*Double(i-6)))])
-                }
-            }
-
-            if !(objects==nil) && (objects?.count>0)
-            {
-                for i in 0 ... objects!.count-1
-                {
-                    let object = objects![i]
-                    records.addObject([
-                        object["step"].floatValue * 1000,
-                        CFDateHelper.getDate(object["date"] as? String)
-                        ])
-                }
-            }
+                (success, records) in
+                self.updateView(records)
+                self.spinner.stopAnimating()
+                self.updateButton.userInteractionEnabled = true;
+            })
+        })
+    }
+    
+    func updateViewWithRecordsFromLocal()
+    {
+        let records = CFRecordManager.fetchLastWeekRecordsFromLocal()
+        dispatch_async(dispatch_get_main_queue(),
+        {
+            self.updateView(records)
+        })
+    }
+    
+    func updateViewWithRecordsFromServer()
+    {
+        CFRecordManager.fetchLastWeekRecordsFromServer
+        {
+            (success, records) in
             
             dispatch_async(dispatch_get_main_queue(),
             {
@@ -83,8 +80,46 @@ class HistoryViewController: UIViewController
         super.didReceiveMemoryWarning()
     }
     
-    func updateView(records:NSArray)
+    func updateView(records:[CFRecord])
     {
+        var recordsToDisplay = [CFRecord]()
+        let today = NSDate()
+        for i in 1 ... 7
+        {
+            let dayBefore = today.dateByAddingTimeInterval(-Double(7-i)*24 * 60 * 60)
+            let recordToDisplay = CFRecord()
+            recordToDisplay.date = CFDateHelper.getDateString(dayBefore)
+            recordToDisplay.step = 0
+            recordToDisplay.goal = 0
+            recordsToDisplay.append(recordToDisplay)
+        }
+        
+        var indexRecords = 0
+        var indexRecordsToDisplay = 0
+        
+        while (indexRecordsToDisplay < recordsToDisplay.count && indexRecords < records.count)
+        {
+            let record = records[indexRecords]
+            let recordToDisplay = recordsToDisplay[indexRecordsToDisplay]
+            
+            if (record.date == recordToDisplay.date)
+            {
+                recordToDisplay.step = record.step
+                recordToDisplay.goal = record.goal
+                
+                indexRecords += 1
+                indexRecordsToDisplay += 1
+            }
+            else if (record.date < recordToDisplay.date)
+            {
+                indexRecords += 1
+            }
+            else
+            {
+                indexRecordsToDisplay += 1
+            }
+        }
+        
         //Get screen sizes
         let screenSize: CGRect = UIScreen.mainScreen().bounds
         let screenWidth = screenSize.width

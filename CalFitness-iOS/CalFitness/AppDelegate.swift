@@ -20,9 +20,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate
     {
         // Register for Parse Server
         registerParseServer()
-
-        self.performUserAuthVerification(application)
+        
         self.performHealthKitAuthVerification(application)
+        self.performUserAuthVerification(application)
 
         UIApplication.sharedApplication().setMinimumBackgroundFetchInterval(UIApplicationBackgroundFetchIntervalMinimum);
         

@@ -13,7 +13,7 @@ class CFDateHelper
 {
     
     // Method to convert date to string
-    class func getDateString(date:NSDate?) -> NSString
+    class func getDateString(date:NSDate?) -> String
     {
         if let date = date
         {

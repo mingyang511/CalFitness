@@ -13,22 +13,19 @@ import Parse
 class Graph : UIView {
     // properties, methods such as `drawRect:`, etc., go here
     
-    init (frame : CGRect, records: NSArray) {
+    init (frame : CGRect, records: [CFRecord]) {
         super.init(frame : frame)
         
         //Get maximum
         var myMax: Float = 0.0
         for i in 0...records.count-1 {
-            let record = records.objectAtIndex(i) as! NSArray
-            if let step = record[0] as? Float {
-                if (step > myMax){
-                    myMax = step
-                }
+            let record = records[i]
+            if (record.step > myMax){
+                myMax = record.step
             }
-            if let goal = record[1] as? Float {
-                if (goal > myMax){
-                    myMax = goal
-                }
+            
+            if (record.goal > myMax){
+                myMax = record.goal
             }
         }
         
@@ -38,23 +35,17 @@ class Graph : UIView {
         
         //Add sections
         for i in 0...records.count-1 {
-            let record = records[i] as! NSArray
-            if let step = record[0] as? Float {
-                if let goal = record[1] as? Float {
-                    if let date =  record[2] as? NSDate {
-                        let container: GraphBar = GraphBar(
-                            frame:CGRectMake(CGFloat(i)*frame.size.width/7.0,0,frame.size.width/7.0, frame.size.height),
-                            goalData: goal,
-                            stepsData: step,
-                            max: myMax,
-                            date:date)
-                        self.addSubview(container)
-                    }
-                }
-            }
+            let record = records[i]
+            let container: GraphBar = GraphBar(
+                frame:CGRectMake(CGFloat(i)*frame.size.width/7.0,0,frame.size.width/7.0, frame.size.height),
+                goalData: record.goal,
+                stepsData: record.step,
+                max: myMax,
+                date:CFDateHelper.getDate(record.date))
+            self.addSubview(container)
         }
     }
-    
+
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
