@@ -197,7 +197,7 @@ class CFRecordManager
         }
     }
     
-    private class func createEmptyLastWeekRecords() -> [CFRecord]
+    class func createEmptyLastWeekRecords() -> [CFRecord]
     {
         var records = [CFRecord]()
         let today = NSDate()
@@ -215,7 +215,7 @@ class CFRecordManager
         return records
     }
     
-    private class func createEmptyTodayRecord() -> CFRecord
+    class func createEmptyTodayRecord() -> CFRecord
     {
         let record = CFRecord()
         record.date = CFDateHelper.getDateString(NSDate())

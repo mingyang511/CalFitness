@@ -82,18 +82,7 @@ class HistoryViewController: UIViewController
     
     func updateView(records:[CFRecord])
     {
-        var recordsToDisplay = [CFRecord]()
-        let today = NSDate()
-        for i in 1 ... 7
-        {
-            let dayBefore = today.dateByAddingTimeInterval(-Double(7-i)*24 * 60 * 60)
-            let recordToDisplay = CFRecord()
-            recordToDisplay.date = CFDateHelper.getDateString(dayBefore)
-            recordToDisplay.step = 0
-            recordToDisplay.goal = 0
-            recordsToDisplay.append(recordToDisplay)
-        }
-        
+        var recordsToDisplay = CFRecordManager.createEmptyLastWeekRecords()
         var indexRecords = 0
         var indexRecordsToDisplay = 0
         
