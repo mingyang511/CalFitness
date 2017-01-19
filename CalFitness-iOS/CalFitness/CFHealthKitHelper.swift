@@ -88,8 +88,7 @@ class CFHealthKitHelper
         for i in 0 ... days
         {
             let dayBefore = today.dateByAddingTimeInterval(-Double(days-i)*24 * 60 * 60)
-            let record = CFRecord()
-            record.date = CFDateHelper.getDateString(dayBefore)
+            let record = CFRecordManager.createRecord(0, date: CFDateHelper.getDateString(dayBefore))
             records.append(record)
         }
         
@@ -113,12 +112,12 @@ class CFHealthKitHelper
                         
                         if (record.date == startDateString)
                         {
-                            let oldNumber: Float = record.step
+                            let oldNumber: Int = record.step
                             let fullName = String(result.quantity)
                             let fullNameArr = fullName.characters.split{$0 == " "}.map(String.init)
                             let numberString: String = fullNameArr[0]
-                            let number: Float = (numberString as NSString).floatValue
-                            let newNumber: Float = oldNumber + number
+                            let number: Int = (numberString as NSString).integerValue
+                            let newNumber: Int = oldNumber + number
                             
                             record.date = startDateString
                             record.step = newNumber

@@ -13,8 +13,7 @@ enum CFUserGroup: NSInteger
 {
     case SteadyGoalWithNoNotification = 1 // Steady goal at 10,000 steps and no push notification.
     case SimpleGoalWithRandomNotification = 2 // Simple goal step setting and random push notification
-    case CustomizedGoalWithRandomNotification = 3 // Goal algorithm and random push notification
-    case CustomizedGoalWithCustomizedNotification = 4 // Goal algorithm and customized push notification
+    case CustomizedGoalWithCustomizedNotification = 3 // Goal algorithm and customized push notification
     case Unknown
 }
 

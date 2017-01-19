@@ -12,11 +12,23 @@ import Parse
 class CFRecordManager
 {
     // Method to create new record
-    class func createRecord(step:Float, date:String) -> CFRecord
+    class func createRecord(step:Int, date:String) -> CFRecord
     {
         let record = CFRecord()
         record.step = step;
         record.date = date;
+        record.goal = -1
+        record.user = PFUser.currentUser();
+        return record;
+    }
+    
+    // Method to create new record
+    class func createRecord(step:Int, goal:Int, date:String) -> CFRecord
+    {
+        let record = CFRecord()
+        record.step = step;
+        record.date = date;
+        record.goal = goal;
         record.user = PFUser.currentUser();
         return record;
     }
@@ -84,7 +96,7 @@ class CFRecordManager
     }
 
     // Method to create new record and save to server
-    class func saveTodayRecordToServer(step:Float, date:String, completion:(success:Bool, record: CFRecord) -> Void)
+    class func saveTodayRecordToServer(step:Int, date:String, completion:(success:Bool, record: CFRecord) -> Void)
     {
         // Create new record
         let record = createRecord(step, date:date)
@@ -133,10 +145,9 @@ class CFRecordManager
         {
             for rawRecord in rawRecords as! [CFRecord]
             {
-                let record = CFRecord()
-                record.date = rawRecord["date"] as! String
-                record.step = rawRecord["step"] as! Float
-                record.goal = rawRecord["goal"] as! Float
+                let record = CFRecordManager.createRecord(rawRecord["step"] as! Int,
+                                                          goal: rawRecord["goal"] as! Int,
+                                                          date: rawRecord["date"] as! String)
                 records.append(record)
             }
         }
@@ -154,14 +165,14 @@ class CFRecordManager
     {
         let userDefaults = NSUserDefaults.standardUserDefaults()
         let rawRecord = userDefaults.objectForKey("TodayRecord")
-        var record = CFRecord()
+        var record = CFRecordManager.createEmptyTodayRecord()
         
         if (rawRecord != nil)
         {
             let rawRecord = rawRecord as! NSDictionary
-            record.date = rawRecord["date"] as! String
-            record.step = rawRecord["step"] as! Float
-            record.goal = rawRecord["goal"] as! Float
+            record = CFRecordManager.createRecord(rawRecord["step"] as! Int,
+                                                  goal: rawRecord["goal"] as! Int,
+                                                  date: rawRecord["date"] as! String)
         }
         else
         {
@@ -205,10 +216,7 @@ class CFRecordManager
         for i in 1 ... 7
         {
             let dayBefore = today.dateByAddingTimeInterval(-Double(7-i)*24 * 60 * 60)
-            let record = CFRecord()
-            record.date = CFDateHelper.getDateString(dayBefore)
-            record.step = 0
-            record.goal = 0
+            let record = CFRecordManager.createRecord(0, date: CFDateHelper.getDateString(dayBefore))
             records.append(record)
         }
         
@@ -217,10 +225,7 @@ class CFRecordManager
     
     class func createEmptyTodayRecord() -> CFRecord
     {
-        let record = CFRecord()
-        record.date = CFDateHelper.getDateString(NSDate())
-        record.step = 0
-        record.goal = 0
+        let record = CFRecordManager.createRecord(0, date: CFDateHelper.getDateString(NSDate()))
         return record
     }
 }

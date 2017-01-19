@@ -23,7 +23,6 @@ extension AppDelegate
             configuration.server = SashidoServer
             configuration.applicationId = SashidoAppId
             configuration.clientKey = SashidoClientKey
-            
         }))
     }
 }

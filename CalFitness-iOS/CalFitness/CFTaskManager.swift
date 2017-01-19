@@ -40,7 +40,7 @@ class CFTaskManager
                 (success, records) in
                 CFRecordManager.saveLastWeekRecordsToServer(records, completion:
                 {
-                    (success, record) in
+                    (success, records) in
                     completion(success: success)
                 })
             })

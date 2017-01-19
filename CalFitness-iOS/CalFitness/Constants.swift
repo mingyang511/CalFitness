@@ -8,6 +8,6 @@
 
 import Foundation
 
-let SashidoServer = ""
-let SashidoAppId = ""
-let SashidoClientKey = ""
+let SashidoServer = "https://pg-app-uuh60z1arvgpgx2qp0lbsddcgc0iz7.scalabl.cloud/1/"
+let SashidoAppId = "iJdpIxC4jBNFkj6eEjNIXKmuToEUFMHaFoSPSzUY"
+let SashidoClientKey = "N4A0gDqaiOl1YUYbAtMR0Ls8peEPaoYFMFSUUHTM"

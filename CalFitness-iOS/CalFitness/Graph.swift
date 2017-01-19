@@ -17,7 +17,7 @@ class Graph : UIView {
         super.init(frame : frame)
         
         //Get maximum
-        var myMax: Float = 0.0
+        var myMax: Int = 0
         for i in 0...records.count-1 {
             let record = records[i]
             if (record.step > myMax){
@@ -38,9 +38,9 @@ class Graph : UIView {
             let record = records[i]
             let container: GraphBar = GraphBar(
                 frame:CGRectMake(CGFloat(i)*frame.size.width/7.0,0,frame.size.width/7.0, frame.size.height),
-                goalData: record.goal,
-                stepsData: record.step,
-                max: myMax,
+                goalData: Float(record.goal),
+                stepsData: Float(record.step),
+                max: Float(myMax),
                 date:CFDateHelper.getDate(record.date))
             self.addSubview(container)
         }
