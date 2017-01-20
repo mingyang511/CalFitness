@@ -124,6 +124,9 @@ class CFHealthKitHelper
                         }
                     }
                 }
+                
+                records = records.sort({ record1, record2 in return record1.date < record2.date })
+                
                 completion(success: true, records: records)
             }
             else

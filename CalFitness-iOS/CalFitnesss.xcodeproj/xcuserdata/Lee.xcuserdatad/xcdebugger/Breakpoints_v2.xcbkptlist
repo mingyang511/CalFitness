@@ -382,9 +382,7 @@
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "128"
-            endingLineNumber = "128"
-            landmarkName = "updateView(records:)"
-            landmarkType = "7">
+            endingLineNumber = "128">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -414,9 +412,7 @@
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "131"
-            endingLineNumber = "131"
-            landmarkName = "updateView(records:)"
-            landmarkType = "7">
+            endingLineNumber = "131">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -782,9 +778,7 @@
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "133"
-            endingLineNumber = "133"
-            landmarkName = "updateView(records:)"
-            landmarkType = "7">
+            endingLineNumber = "133">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -2271,7 +2265,7 @@
                   moduleName = "CalFitness"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/Lee/CalFitness/CalFitness-iOS/CalFitness/CFAuthHelper.swift"
-                  timestampString = "506538338.179888"
+                  timestampString = "506624861.439132"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "17"
@@ -2286,7 +2280,7 @@
                   moduleName = "CalFitness"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/Lee/CalFitness/CalFitness-iOS/CalFitness/CFAuthHelper.swift"
-                  timestampString = "506538338.182483"
+                  timestampString = "506624861.441709"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "20"

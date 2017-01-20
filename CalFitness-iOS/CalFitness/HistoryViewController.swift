@@ -115,7 +115,9 @@ class HistoryViewController: UIViewController
         let screenHeight = screenSize.height
         
         // Create graph view
-        let graphView: Graph = Graph(frame:CGRectMake(20, 140, screenWidth - 40, screenHeight - 160), records:records)
+        let graphView: Graph = Graph(frame:CGRectMake(20, 140, screenWidth - 40, screenHeight - 160),
+                                     records:recordsToDisplay)
+        
         self.view.addSubview(graphView)
         if !(self.graph == nil)
         {
