@@ -46,6 +46,7 @@ class HistoryViewController: UIViewController
             CFRecordManager.saveLastWeekRecordsToServer(records, completion:
             {
                 (success, records) in
+                
                 self.updateView(records)
                 self.spinner.stopAnimating()
                 self.updateButton.userInteractionEnabled = true;
@@ -56,6 +57,7 @@ class HistoryViewController: UIViewController
     func updateViewWithRecordsFromLocal()
     {
         let records = CFRecordManager.fetchLastWeekRecordsFromLocal()
+        
         dispatch_async(dispatch_get_main_queue(),
         {
             self.updateView(records)
@@ -85,7 +87,7 @@ class HistoryViewController: UIViewController
         var recordsToDisplay = CFRecordManager.createEmptyLastWeekRecords()
         var indexRecords = 0
         var indexRecordsToDisplay = 0
-        
+
         while (indexRecordsToDisplay < recordsToDisplay.count && indexRecords < records.count)
         {
             let record = records[indexRecords]

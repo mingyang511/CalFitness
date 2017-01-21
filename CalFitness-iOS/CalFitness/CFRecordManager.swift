@@ -14,11 +14,7 @@ class CFRecordManager
     // Method to create new record
     class func createRecord(step:Int, date:String) -> CFRecord
     {
-        let record = CFRecord()
-        record.step = step;
-        record.date = date;
-        record.goal = -1
-        record.user = PFUser.currentUser();
+        let record = createRecord(step, goal: -1, date: date)
         return record;
     }
     
@@ -30,6 +26,7 @@ class CFRecordManager
         record.date = date;
         record.goal = goal;
         record.user = PFUser.currentUser();
+        record.client = "app"
         return record;
     }
     

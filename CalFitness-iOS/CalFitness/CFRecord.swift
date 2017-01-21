@@ -19,6 +19,8 @@ class CFRecord : PFObject, PFSubclassing
     @NSManaged var notificationMessage: String
     @NSManaged var notificationCategory: Int
     @NSManaged var notificationPushedAt: NSDate
+    
+    @NSManaged var client: String
    
     override class func initialize()
     {
