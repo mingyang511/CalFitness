@@ -27,6 +27,9 @@ class CFRecordManager
         record.goal = goal;
         record.user = PFUser.currentUser();
         record.client = "app"
+        record.notificationMessage = "-1"
+        record.notificationCategory = -1
+        record.notificationPushedAt = "-1"
         return record;
     }
     

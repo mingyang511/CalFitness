@@ -18,7 +18,7 @@ class CFRecord : PFObject, PFSubclassing
     
     @NSManaged var notificationMessage: String
     @NSManaged var notificationCategory: Int
-    @NSManaged var notificationPushedAt: NSDate
+    @NSManaged var notificationPushedAt: String
     
     @NSManaged var client: String
    

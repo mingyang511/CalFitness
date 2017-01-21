@@ -56,11 +56,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "CalFitness/AppDelegate.swift"
-            timestampString = "506688922.627175"
+            timestampString = "506704361.052388"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "125"
-            endingLineNumber = "125">
+            startingLineNumber = "118"
+            endingLineNumber = "118">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -1248,22 +1248,6 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "CalFitness/AppDelegate.swift"
-            timestampString = "506688922.627175"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "36"
-            endingLineNumber = "36"
-            landmarkName = "applicationWillEnterForeground(application:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
             filePath = "CalFitness/AppDelegate+Notification.swift"
             timestampString = "506165768.310461"
             startingColumnNumber = "9223372036854775807"
@@ -1653,7 +1637,7 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "CalFitness/HomeViewController.swift"
@@ -1689,7 +1673,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "CalFitness/CFHealthKitHelper.swift"
-            timestampString = "506253970.198105"
+            timestampString = "506704017.04558"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "84"
@@ -1705,7 +1689,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "CalFitness/CFHealthKitHelper.swift"
-            timestampString = "506536995.811407"
+            timestampString = "506704017.04558"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "95"
@@ -1721,7 +1705,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "CalFitness/CFHealthKitHelper.swift"
-            timestampString = "506536995.811407"
+            timestampString = "506704017.04558"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "92"
@@ -1785,11 +1769,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "CalFitness/CFRecordManager.swift"
-            timestampString = "506703284.544852"
+            timestampString = "506704125.185445"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "156"
-            endingLineNumber = "156"
+            startingLineNumber = "159"
+            endingLineNumber = "159"
             landmarkName = "fetchLastWeekRecordsFromLocal()"
             landmarkType = "7">
             <Locations>
@@ -1865,7 +1849,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "CalFitness/CFHealthKitHelper.swift"
-            timestampString = "506254761.22124"
+            timestampString = "506704017.04558"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "67"
@@ -1881,7 +1865,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "CalFitness/CFHealthKitHelper.swift"
-            timestampString = "506254767.317087"
+            timestampString = "506704017.04558"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "72"
@@ -1909,11 +1893,11 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "No"
+            shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "CalFitness/CFHealthKitHelper.swift"
-            timestampString = "506254954.590746"
+            timestampString = "506704017.04558"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "79"
@@ -1977,11 +1961,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "CalFitness/CFRecordManager.swift"
-            timestampString = "506703284.544852"
+            timestampString = "506704125.185445"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "124"
-            endingLineNumber = "124"
+            startingLineNumber = "127"
+            endingLineNumber = "127"
             landmarkName = "saveLastWeekRecordsToServer(records:completion:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -1993,11 +1977,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "CalFitness/CFRecordManager.swift"
-            timestampString = "506703284.544852"
+            timestampString = "506704125.185445"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "125"
-            endingLineNumber = "125"
+            startingLineNumber = "128"
+            endingLineNumber = "128"
             landmarkName = "saveLastWeekRecordsToServer(records:completion:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -2009,11 +1993,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "CalFitness/CFRecordManager.swift"
-            timestampString = "506703284.544852"
+            timestampString = "506704125.185445"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "122"
-            endingLineNumber = "122"
+            startingLineNumber = "125"
+            endingLineNumber = "125"
             landmarkName = "saveLastWeekRecordsToServer(records:completion:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -2057,23 +2041,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "CalFitness/CFRecordManager.swift"
-            timestampString = "506703284.544852"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "217"
-            endingLineNumber = "217"
-            landmarkName = "createEmptyLastWeekRecords()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "CalFitness/CFRecordManager.swift"
-            timestampString = "506703284.544852"
+            timestampString = "506704125.185445"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "220"
@@ -2089,7 +2057,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "CalFitness/CFRecordManager.swift"
-            timestampString = "506703284.544852"
+            timestampString = "506704125.185445"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "223"
@@ -2105,11 +2073,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "CalFitness/CFRecordManager.swift"
-            timestampString = "506703284.544852"
+            timestampString = "506704125.185445"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "227"
-            endingLineNumber = "227"
+            startingLineNumber = "226"
+            endingLineNumber = "226"
             landmarkName = "createEmptyLastWeekRecords()"
             landmarkType = "7">
          </BreakpointContent>
@@ -2121,11 +2089,27 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "CalFitness/CFRecordManager.swift"
-            timestampString = "506703284.544852"
+            timestampString = "506704125.185445"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "153"
-            endingLineNumber = "153"
+            startingLineNumber = "230"
+            endingLineNumber = "230"
+            landmarkName = "createEmptyLastWeekRecords()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "CalFitness/CFRecordManager.swift"
+            timestampString = "506704125.185445"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "156"
+            endingLineNumber = "156"
             landmarkName = "fetchLastWeekRecordsFromLocal()"
             landmarkType = "7">
          </BreakpointContent>
@@ -2137,11 +2121,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "CalFitness/CFRecordManager.swift"
-            timestampString = "506703284.544852"
+            timestampString = "506704125.185445"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "126"
-            endingLineNumber = "126"
+            startingLineNumber = "129"
+            endingLineNumber = "129"
             landmarkName = "saveLastWeekRecordsToServer(records:completion:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -2281,11 +2265,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "CalFitness/CFRecordManager.swift"
-            timestampString = "506703284.544852"
+            timestampString = "506704125.185445"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "115"
-            endingLineNumber = "115"
+            startingLineNumber = "118"
+            endingLineNumber = "118"
             landmarkName = "saveTodayRecordToServer(record:completion:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -2472,13 +2456,45 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "CalFitness/CFAuthHelper.swift"
-            timestampString = "506702682.541128"
+            timestampString = "506704361.052388"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "159"
-            endingLineNumber = "159"
+            startingLineNumber = "161"
+            endingLineNumber = "161"
             landmarkName = "userAuthCompleted()"
             landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "CalFitness.CFAuthHelper.userAuthCompleted () -&gt; ()"
+                  moduleName = "CalFitness"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/Lee/CalFitness/CalFitness-iOS/CalFitness/CFAuthHelper.swift"
+                  timestampString = "506704362.384071"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "161"
+                  endingLineNumber = "161"
+                  offsetFromSymbolStart = "168">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "CalFitness.CFAuthHelper.(userAuthCompleted () -&gt; ()).(closure #1)"
+                  moduleName = "CalFitness"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/Lee/CalFitness/CalFitness-iOS/CalFitness/CFAuthHelper.swift"
+                  timestampString = "506704362.387493"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "161"
+                  endingLineNumber = "161"
+                  offsetFromSymbolStart = "1383">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -2536,7 +2552,7 @@
                   moduleName = "CalFitness"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/Lee/CalFitness/CalFitness-iOS/CalFitness/HeathKitAuthViewController.swift"
-                  timestampString = "506701224.150982"
+                  timestampString = "506704362.392919"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "35"
@@ -2551,7 +2567,7 @@
                   moduleName = "CalFitness"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/Lee/CalFitness/CalFitness-iOS/CalFitness/HeathKitAuthViewController.swift"
-                  timestampString = "506701224.153026"
+                  timestampString = "506704362.394915"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "35"
@@ -2559,6 +2575,22 @@
                   offsetFromSymbolStart = "12">
                </Location>
             </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "CalFitness/CFHealthKitHelper.swift"
+            timestampString = "506704249.654532"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "47"
+            endingLineNumber = "47"
+            landmarkName = "fetchTodayRecordFromHealthKit(completion:)"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

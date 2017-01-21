@@ -32,11 +32,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate
     {
         if (CFAuthHelper.sharedInstance.isLoggedIn())
         {
+            CFHealthKitHelper.sharedInstance.authorizeHealthKit({ (success, error) in })
             CFNotificationCenterHelper.postApplicationWillEnterForegroundNotification()
-        }
-        else
-        {
-            //self.performAuthVerification(application)
         }
     }
         

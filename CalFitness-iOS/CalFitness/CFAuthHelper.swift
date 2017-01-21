@@ -42,6 +42,8 @@ class CFAuthHelper
         }
         else
         {
+            CFHealthKitHelper.sharedInstance.authorizeHealthKit({ (success, error) in })
+            
             appDelegate!.window!!.rootViewController = UIStoryboard.init(name: "Main", bundle: NSBundle.mainBundle()).instantiateViewControllerWithIdentifier("Home");
         }
         
