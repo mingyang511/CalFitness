@@ -132,18 +132,16 @@ class CFAuthHelper
     func performHealthKitAuthVerification(completion:(success:Bool, error:NSError?) -> Void)
     {
         SVProgressHUD.show()
-        
-        if (!CFHealthKitHelper.sharedInstance.authorized)
+
+        CFHealthKitHelper.sharedInstance.authorizeHealthKit
         {
-            CFHealthKitHelper.sharedInstance.authorizeHealthKit
-            {
-                (authorized,  error) -> Void in
-                
-                SVProgressHUD.dismiss()
-                
-                completion(success: authorized, error: error)
-            }
+            (authorized,  error) -> Void in
+            
+            SVProgressHUD.dismiss()
+            
+            completion(success: authorized, error: error)
         }
+        
     }
     
     func userAuthCompleted()

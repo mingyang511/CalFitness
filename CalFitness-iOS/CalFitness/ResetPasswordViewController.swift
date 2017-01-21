@@ -46,14 +46,17 @@ class ResetPasswordViewController: UIViewController, UITextFieldDelegate
         
         self.emailTextField.resignFirstResponder()
         
+        self.view.userInteractionEnabled = false;
+        
         CFAuthHelper.sharedInstance.performUserResetPassword(email!)
         {
             (success, error) in
             
+            self.view.userInteractionEnabled = true;
+            
             if (success)
             {
                 CFAlertHelper.showAlert("Successful", message: "An email has been sent to your inbox. Please check.", controller: self)
-                
             }
             else
             {

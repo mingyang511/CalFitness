@@ -55,9 +55,13 @@ class SignUpViewController: UIViewController, UITextFieldDelegate
         self.emailTextField.resignFirstResponder()
         self.passwordTextField.resignFirstResponder()
         
+        self.view.userInteractionEnabled = false;
+        
         CFAuthHelper.sharedInstance.performUserSignUp(email!, password: password!)
         {
             (success, error) in
+            
+            self.view.userInteractionEnabled = true;
             
             if (success)
             {

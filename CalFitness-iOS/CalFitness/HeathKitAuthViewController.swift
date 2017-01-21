@@ -26,9 +26,13 @@ class HealthKitAuthViewController: UIViewController
     
     @IBAction func authorizeButtonTapped(sender: AnyObject)
     {
+        self.view.userInteractionEnabled = false;
+        
         CFAuthHelper.sharedInstance.performHealthKitAuthVerification
         {
             (success, error) in
+            
+            self.view.userInteractionEnabled = true;
             
             if (success)
             {
