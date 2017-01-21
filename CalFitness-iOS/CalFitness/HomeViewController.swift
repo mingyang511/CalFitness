@@ -1,4 +1,4 @@
-//
+
 //  HomeViewController.swift
 //  CalFitness
 //
@@ -41,12 +41,20 @@ class HomeViewController: UIViewController
     
     override func viewWillAppear(animated: Bool)
     {
-        updateRecord()
+        if(CFAuthHelper.sharedInstance.isLoggedIn())
+        {
+            updateRecord()
+        }
     }
     
     override func didReceiveMemoryWarning()
     {
         super.didReceiveMemoryWarning()
+    }
+
+    @IBAction func signOutButtonTapped(sender: AnyObject)
+    {
+        CFAuthHelper.sharedInstance.performUserSignOut({ (success, error) in })
     }
     
     func updateRecord()

@@ -21,9 +21,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate
         // Register for Parse Server
         registerParseServer()
         
-        self.performHealthKitAuthVerification(application)
-        self.performUserAuthVerification(application)
-
+        CFAuthHelper.sharedInstance.performUserAuth()
+        
         UIApplication.sharedApplication().setMinimumBackgroundFetchInterval(UIApplicationBackgroundFetchIntervalMinimum);
         
         return true
@@ -31,7 +30,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate
 
     func applicationWillEnterForeground(application: UIApplication)
     {
-        CFNotificationCenterHelper.postApplicationWillEnterForegroundNotification()
+        if (CFAuthHelper.sharedInstance.isLoggedIn())
+        {
+            CFNotificationCenterHelper.postApplicationWillEnterForegroundNotification()
+        }
+        else
+        {
+            //self.performAuthVerification(application)
+        }
     }
         
     lazy var applicationDocumentsDirectory: NSURL =

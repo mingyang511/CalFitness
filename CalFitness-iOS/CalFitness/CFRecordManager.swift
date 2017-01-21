@@ -208,6 +208,13 @@ class CFRecordManager
         }
     }
     
+    class func cleanAllRecords()
+    {
+        let userDefaults = NSUserDefaults.standardUserDefaults()
+        userDefaults.removeObjectForKey("TodayRecord")
+        userDefaults.removeObjectForKey("LastWeekRecords")
+    }
+    
     class func createEmptyLastWeekRecords() -> [CFRecord]
     {
         var records = [CFRecord]()
